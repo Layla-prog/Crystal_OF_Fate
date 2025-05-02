@@ -5,6 +5,23 @@ using UnityEngine;
 public class Healer : MonoBehaviour
 {
     public Animator animator;
+    public float healAmount = 25f;
+    public float healThreshold = 70f;
+    private PlayerHealth playerHealth;
+
+    void Start()
+    {
+        playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+        playerHealth.OnDamaged += HandlePlayerDamaged;
+    }
+
+    void HandlePlayerDamaged(float currentHealth)
+    {
+        if (currentHealth < healThreshold)
+        {
+            StartHealing();
+        }
+    }
 
     public void StartHealing()
     {
@@ -17,5 +34,7 @@ public class Healer : MonoBehaviour
         yield return new WaitForSeconds(time);
         animator.SetBool("IsHealing", false);
         animator.SetTrigger("FinishHeal");
+
+        playerHealth.RestoreHealth(healAmount);
     }
 }

@@ -9,6 +9,9 @@ public class PlayerHealth : MonoBehaviour
 
     private PlayerHealthUI healthUI;
 
+    // Event triggered when damage is taken
+    public System.Action<float> OnDamaged;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,20 +29,13 @@ public class PlayerHealth : MonoBehaviour
 
         //Update the health bar
         healthUI.ShowHealthBar(currentHealth / maxHealth);
+
+        OnDamaged?.Invoke(currentHealth);
     }
 
     public void RestoreHealth(float amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
         healthUI.ShowHealthBar(currentHealth / maxHealth);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            TakeDamage(10f);
-        }
     }
 }
