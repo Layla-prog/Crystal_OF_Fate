@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b23376ba66c8fe46a4f23d5a87f7a81, type: 3}
+  m_Name: MirokuMeeting
+  m_EditorClassIdentifier: 
+  lines:
+  - speakerName: Player
+    lineText: Excuse me, are you Eedie, the potion crafter?
+  - speakerName: Potion Crafter Miroku
+    lineText: "The one and only! I see that sparkle in your eye \u2014 you're off
+      to face Zyphor, aren't you?"
+  - speakerName: Player
+    lineText: "I am. I could use some help \u2014 strength, stamina... anything you've
+      got."
+  - speakerName: Potion Crafter Miroku
+    lineText: Heh, bravery and manners. I like you already. I can brew something
+      to boost your might.
+  - speakerName: Player
+    lineText: 'But I''ll need ingredients: 5 red herbs and 3 drops of moondew sap.
+      Think you can gather those?'
+  - speakerName: Potion Crafter Miroku
+    lineText: 'But I''ll need ingredients: 5 red herbs and 3 drops of moondew sap.
+      Think you can gather those?'
+  - speakerName: Player
+    lineText: I'll get them and come back. Thank you, Eedie.
+  - speakerName: Potion Crafter Miroku
+    lineText: Good luck out there.

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b23376ba66c8fe46a4f23d5a87f7a81, type: 3}
+  m_Name: EedieMeeting
+  m_EditorClassIdentifier: 
+  lines:
+  - speakerName: 'Player '
+    lineText: You must be Healer Miroku. They say your hands can mend even the deepest
+      wounds.
+  - speakerName: Healer Eedie
+    lineText: Names are but whispers in the wind. But yes, I have walked the path
+      of restoration for many years.
+  - speakerName: Player
+    lineText: "My journey is dangerous. I won\u2019t survive without someone to keep
+      me standing."
+  - speakerName: Healer Eedie
+    lineText: Then it is fate that brought you here. I cannot vanquish your enemies,
+      but I can keep your soul tethered to this world.
+  - speakerName: Player
+    lineText: Will you help me?
+  - speakerName: Healer Eedie
+    lineText: "So long as your heart remains steady and your cause just, I will be
+      there \u2014 in shadow or storm."
+  - speakerName: Player
+    lineText: "Thank you. With you by my side, I won\u2019t fall easily."
+  - speakerName: Healer Eedie
+    lineText: Even the strongest warrior must rest and heal. Do not be ashamed to
+      lean on others.

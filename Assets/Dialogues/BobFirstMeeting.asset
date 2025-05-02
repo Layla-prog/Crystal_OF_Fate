@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b23376ba66c8fe46a4f23d5a87f7a81, type: 3}
+  m_Name: BobFirstMeeting
+  m_EditorClassIdentifier: 
+  lines:
+  - speakerName: Crafty Bob
+    lineText: "Long ago, the Realm thrived in lush flora and peaceful harmony. Until
+      the Crystal was stolen by Zyphor, a corrupted being born from shadow. \nWithout
+      the Crystal, the forest withered and monstrous beasts plagued the land.\nBeing
+      the hero your quest is to restore the realm's balance by reclaiming the crystal."
+  - speakerName: Player
+    lineText: Hey... I've heard whispers about the Crystal. Can you tell me what
+      should I do first?
+  - speakerName: Crafty Bob
+    lineText: Ah... not many dare to speak of Zyphor these days. So you're really
+      going after the Crystal, huh?
+  - speakerName: Player
+    lineText: I have to. The realm won't survive without it. But I can't do it alone
+      - I need guidance.
+  - speakerName: Crafty Bob
+    lineText: Hah! I like your spirit. First thing's first - you'll need a real weapon.
+      Not those bent sticks or cracked blades out there.
+  - speakerName: Player
+    lineText: Alright. What do I need to make one?
+  - speakerName: Crafty Bob
+    lineText: To forge a blade fir for a real fight, bring me 3 wood and 2 iron.
+      There's still some near the mine entrance.
+  - speakerName: Player
+    lineText: I'll find them. And once I've the sword?
+  - speakerName: Crafty Bob
+    lineText: Seek out Eedie, the potion crafter. She brews strength and stamina
+      potions. Trust me, you'll need both.
+  - speakerName: Player
+    lineText: Anyone else I should look for?
+  - speakerName: Crafty Bob
+    lineText: Aye. Archer Kate. She camps near the goblin-infested woods. Fierce
+      lass - she might join you if she thinks you're worth the effort.
+  - speakerName: Player
+    lineText: And when I finally reach Zyphor?
+  - speakerName: Crafty Bob
+    lineText: Heh... slow down, kid. Before Zyphor, you'll have to deal with his
+      twisted ally - Kirara. A rogue wizard. Once a healer, now a poison-crafter
+      serving his darkness.
+  - speakerName: Player
+    lineText: Then I'll stop her too.
+  - speakerName: Crafty Bob
+    lineText: 'You''ll need more than a sword. Allies, potions, courage... and maybe
+      something you''ve yet to find.
+
+      Kirara doesn''t fight fair - her toxins
+      can rot your strength long before your blade even touches her.'
+  - speakerName: Player
+    lineText: Any advice?
+  - speakerName: Crafty Bob
+    lineText: Avoid the fumes. Fight from range if you can. And bring antidotes -
+      Eedie might be able to brew something to counter Kirara's venom.
+  - speakerName: Player
+    lineText: 'Understood. I''ll be ready.
+
+      I''ll gather what i need - then
+      I''ll return.'
+  - speakerName: Crafty Bob
+    lineText: I'll be here, hammer in hand. Bring me those materials, and I'll forge
+      the blade that may turn fate in your favor.

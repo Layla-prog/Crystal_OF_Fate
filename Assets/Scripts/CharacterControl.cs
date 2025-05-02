@@ -4,22 +4,39 @@ using UnityEngine;
 
 public class CharacterControl : MonoBehaviour
 {
-    public float jogSpeed, runSpeed, jumpPower, turnSpeed;
+    public float jogSpeed = 2f;
+    public float runSpeed = 4f;
+    public float jumpPower = 8f;
+    public float gravity = 20f;
+    public float turnSpeed = 10f;
 
     private float xInput, zInput;
 
     private float speed;
 
-    private Vector3 movement;
+    private Vector3 moveDirection = Vector3.zero;
 
-    private Rigidbody rb;
+    private CharacterController controller;
+    private Animator animator;
+    //private Transform potionAnchor;
+
+    //Boost values
+    private float baseJogSpeed;
+    private float baseRunSpeed;
+
+    private string storedPotionType = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
 
         speed = jogSpeed;
+        baseJogSpeed = jogSpeed;
+        baseRunSpeed = runSpeed;
+
+        //potionAnchor = transform.Find("hips/PotionAnchor");
     }
 
     // Update is called once per frame
@@ -29,6 +46,8 @@ public class CharacterControl : MonoBehaviour
         xInput = Input.GetAxis("Horizontal");
 
         zInput = Input.GetAxis("Vertical");
+
+        Vector3 inputDirection = new Vector3(xInput, 0, zInput).normalized;
 
         //Check if the player is running
         if (Input.GetAxis("Run") > 0.1f)
@@ -40,20 +59,73 @@ public class CharacterControl : MonoBehaviour
             speed = jogSpeed;
         }
 
-        if (Input.GetButtonDown("Jump"))
+
+        if (controller.isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            moveDirection = inputDirection * speed;
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                moveDirection.y = jumpPower;
+            }
+
+            // only rotate if moving
+            if (inputDirection.magnitude > 0.1f)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(inputDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
+            }
+
+            float movementSpeed = new Vector2(xInput, zInput).magnitude;
+            animator.SetFloat("Speed", movementSpeed);
         }
 
-        //Set movement
-        movement = new Vector3(xInput, 0, zInput) * 100 * speed * Time.deltaTime;
+        // Apply gravity
+        moveDirection.y -= gravity * Time.deltaTime;
 
-        if (movement.magnitude != 0)
+        // Move the player
+        controller.Move(moveDirection * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            transform.rotation = Quaternion.LookRotation(new Vector3(movement.x, 0, movement.z));
-        }
+            Transform potion = transform.Find("hips/handslot.l/PotionAnchor/Potion(Clone)");
+            if (potion != null && !string.IsNullOrEmpty(storedPotionType))
+            {
+                animator.SetTrigger("UseItem");
+                if (storedPotionType == "Strength")
+                {
+                    StartCoroutine(ApplyStrengthBoost());
+                }
+                else if (storedPotionType == "Stamina")
+                {
+                    StartCoroutine (ApplyStaminaBoost());
+                }
 
-        //Change the velocity
-        rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+                Destroy(potion.gameObject); // Remove the potion after use
+                storedPotionType = null;
+            }
+        }
+    }
+
+    public void SetCurrentPotionType(string type)
+    {
+        storedPotionType = type;
+        Debug.Log($"Received {type} potion. Press E to use it.");
+    }
+
+    IEnumerator ApplyStrengthBoost()
+    {
+        Debug.Log("Strength Boost Activated!");
+        runSpeed *= 1.5f;
+        yield return new WaitForSeconds(10f);
+        runSpeed = baseRunSpeed;
+    }
+
+    IEnumerator ApplyStaminaBoost()
+    {
+        Debug.Log("Stamina Boost Activated!");
+        jogSpeed *= 1.5f;
+        yield return new WaitForSeconds(10f);
+        jogSpeed = baseJogSpeed;
     }
 }

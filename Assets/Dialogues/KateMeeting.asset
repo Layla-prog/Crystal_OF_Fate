@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b23376ba66c8fe46a4f23d5a87f7a81, type: 3}
+  m_Name: KateMeeting
+  m_EditorClassIdentifier: 
+  lines:
+  - speakerName: Player
+    lineText: Are you Kate? Crafty Bob said you might be able to help.
+  - speakerName: Archer Kate
+    lineText: "Bob? Ha, that old man is always talking about \u2018heroes.\u2019
+      You don\u2019t look like much, but... I suppose that\u2019s how most people
+      look before they surprise you."
+  - speakerName: Player
+    lineText: "I\u2019m going after Zyphor. The journey\u2019s dangerous, and I could
+      use help."
+  - speakerName: Archer Kate
+    lineText: "Zyphor? You\u2019ve got some nerve, but... there\u2019s something
+      about you. I can see it in your eyes. You\u2019re willing to fight \u2014 even
+      if it means throwing yourself into the fire."
+  - speakerName: Player
+    lineText: "I don\u2019t have a choice. The realm needs saving."
+  - speakerName: Archer Kate
+    lineText: "True. It\u2019s going to take more than just courage, though. You\u2019ll
+      need skill. Strategy. You can\u2019t win by charging in blindly."
+  - speakerName: Player
+    lineText: So, what are you suggesting?
+  - speakerName: Archer Kate
+    lineText: "I\u2019m suggesting I come with you. I\u2019ve got skills with a bow
+      and a sharp eye for danger. And I\u2019m no stranger to goblins \u2014 in fact,
+      I\u2019m hunting some right now."
+  - speakerName: Player
+    lineText: "You\u2019d help me? Just like that?"
+  - speakerName: Archer Kate
+    lineText: "Why not? I\u2019ve seen too many people fall to Zyphor\u2019s forces.
+      But you... you seem like someone who could make a difference. If you\u2019re
+      serious about this, I\u2019m in. The fight\u2019s only going to get harder,
+      and you\u2019ll need all the help you can get."
+  - speakerName: Player
+    lineText: Alright. Welcome to the team, Kate.
