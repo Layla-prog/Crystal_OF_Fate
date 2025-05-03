@@ -6,7 +6,7 @@ public class BillBoard : MonoBehaviour
 {
     void LateUpdate()
     {
-        if (Camera.main)
+        if (Camera.main != null)
         {
             transform.forward = Camera.main.transform.forward;
         }
