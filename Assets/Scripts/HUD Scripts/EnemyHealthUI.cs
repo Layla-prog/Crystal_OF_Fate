@@ -13,6 +13,8 @@ public class EnemyHealthUI : MonoBehaviour
 
     public void Show(float percent)
     {
+        if (healthBarRoot == null || fillImage == null) return;
+
         healthBarRoot.SetActive(true);
         fillImage.fillAmount = percent;
 
@@ -33,7 +35,10 @@ public class EnemyHealthUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (healthBarRoot != null)
+        {
+            healthBarRoot.SetActive(false); // Start hidden
+        }
     }
 
     // Update is called once per frame
