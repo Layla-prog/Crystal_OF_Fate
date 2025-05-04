@@ -30,7 +30,7 @@ public class PotionChoiceUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Show panel when player presses Q
+        // Show panel when player clicks Q
         if (Input.GetKeyDown(KeyCode.Q))
         {
             choicePanel.SetActive(true);

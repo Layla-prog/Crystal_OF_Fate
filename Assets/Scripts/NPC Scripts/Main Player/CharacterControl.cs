@@ -18,7 +18,6 @@ public class CharacterControl : MonoBehaviour
 
     private CharacterController controller;
     private Animator animator;
-    //private Transform potionAnchor;
 
     //Boost values
     private float baseJogSpeed;
@@ -35,8 +34,6 @@ public class CharacterControl : MonoBehaviour
         speed = jogSpeed;
         baseJogSpeed = jogSpeed;
         baseRunSpeed = runSpeed;
-
-        //potionAnchor = transform.Find("hips/PotionAnchor");
     }
 
     // Update is called once per frame

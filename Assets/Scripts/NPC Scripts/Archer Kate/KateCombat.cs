@@ -16,8 +16,8 @@ public class KateCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //check for stab input - mouse left button
-        if (Input.GetMouseButtonDown(0))
+        //check for stab input - R
+        if (Input.GetKeyDown(KeyCode.R))
         {
             TriggerStab();
         }

@@ -18,7 +18,6 @@ public class KateFollowAndCombat : MonoBehaviour
     public Transform firePoint;
     public LayerMask enemyLayer;
 
-    //private NavMeshAgent agent;
     private float lastAttackTime;
     private bool isActive = false;
 
@@ -103,7 +102,7 @@ public class KateFollowAndCombat : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 10f * Time.deltaTime);
             }
 
-            animator.SetFloat("Speed", moveDir.magnitude); // Animate based on actual movement
+            animator.SetFloat("Speed", moveDir.magnitude); 
         }
         else
         {
