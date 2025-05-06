@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GoblinAI : MonoBehaviour
@@ -11,7 +12,8 @@ public class GoblinAI : MonoBehaviour
     public int attackDamage = 10;
     public Animator animator;
 
-    private Transform player;
+    //private Transform player;
+    private Transform currentTarget;
     private float attackTimer = 0f;
     private CharacterController controller;
     private bool isDead = false;
@@ -21,13 +23,13 @@ public class GoblinAI : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
 
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        //player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isDead || player == null) return;
+        /*if (isDead || player == null) return;
 
         float distance = Vector3.Distance(transform.position, player.position);
         Vector3 direction = (player.position - transform.position).normalized;
@@ -62,12 +64,90 @@ public class GoblinAI : MonoBehaviour
             controller.SimpleMove(Vector3.zero);
         }
 
+        attackTimer -= Time.deltaTime;*/
+
+        if (isDead) return;
+
+        FindNearestTarget();
+
+        if (currentTarget == null)
+        {
+            return;
+        }
+
+        float distance = Vector3.Distance(transform.position, currentTarget.position);
+        Vector3 direction = (currentTarget.position - transform.position).normalized;
+        direction.y = 0f;
+
+        //float stopBuffer = 0.3f;
+
+        if (distance <= detectRange)
+        {
+            FindNearestTarget();
+
+            if (distance > attackRange)
+            {
+                controller.SimpleMove(direction * moveSpeed);
+                animator.SetFloat("Speed", 1f);
+            }
+            else
+            {
+                controller.SimpleMove(Vector3.zero);
+                animator.SetFloat("Speed", 0f);
+
+                if (attackTimer <= 0f)
+                {
+                    animator.SetTrigger("Attack");
+                    attackTimer = attackCooldown;
+                }
+            }
+        }
+
         attackTimer -= Time.deltaTime;
+
     }
 
-    void FacePlayer()
+    void FindNearestTarget()
     {
-        Vector3 lookDir = player.position - transform.position;
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Player");
+
+        float shortestDistance = Mathf.Infinity;
+        Transform nearest = null;
+
+        foreach (var target in targets)
+        {
+            float dist = Vector3.Distance(transform.position, target.transform.position);
+            if (dist < shortestDistance)
+            {
+                shortestDistance = dist;
+                nearest = target.transform;
+            }
+        }
+
+        GameObject[] allies = GameObject.FindGameObjectsWithTag("Ally");
+        foreach (var ally in allies)
+        {
+            float dist = Vector3.Distance(transform.position, ally.transform.position);
+            if (dist < shortestDistance)
+            {
+                shortestDistance = dist;
+                nearest = ally.transform;
+            }
+        }
+
+        currentTarget = nearest;
+    }
+
+    void FaceTarget()
+    {
+        /*Vector3 lookDir = player.position - transform.position;
+        lookDir.y = 0;
+        if (lookDir != Vector3.zero)
+            transform.forward = lookDir.normalized;*/
+
+        if (currentTarget == null) return;
+
+        Vector3 lookDir = currentTarget.position - transform.position;
         lookDir.y = 0;
         if (lookDir != Vector3.zero)
             transform.forward = lookDir.normalized;
@@ -84,15 +164,44 @@ public class GoblinAI : MonoBehaviour
 
     public void DealDamage()
     {
-        if (player == null) return;
+        /* if (player == null) return;
 
-        float dist = Vector3.Distance(transform.position, player.position);
+         float dist = Vector3.Distance(transform.position, player.position);
+         if (dist <= attackRange + 0.2f)
+         {
+             PlayerCombat combat = player.GetComponent<PlayerCombat>();
+             if (combat != null)
+             {
+                 combat.TakeHit(combat.IsBlocking()); // Add IsBlocking() method if needed
+             }
+         }*/
+
+        if (currentTarget == null) return;
+
+        float dist = Vector3.Distance(transform.position, currentTarget.position);
         if (dist <= attackRange + 0.2f)
         {
-            PlayerCombat combat = player.GetComponent<PlayerCombat>();
-            if (combat != null)
+            // Check if it's the player
+            if (currentTarget.CompareTag("Player"))
             {
-                combat.TakeHit(combat.IsBlocking()); // Add IsBlocking() method if needed
+                var playerCombat = currentTarget.GetComponent<PlayerCombat>();
+                var playerHealth = currentTarget.GetComponent<PlayerHealth>();
+                if (playerCombat != null)
+                {
+                    playerCombat.TakeHit(playerCombat.IsBlocking());
+                }
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(attackDamage);
+                }
+            }
+            else if (currentTarget.CompareTag("Ally"))
+            {
+                var npcCombat = currentTarget.GetComponent<NPCCombat>();
+                if (npcCombat != null)
+                {
+                    npcCombat.TakeDamage(attackDamage);
+                }
             }
         }
     }

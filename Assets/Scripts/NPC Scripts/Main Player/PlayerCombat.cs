@@ -12,10 +12,13 @@ public class PlayerCombat : MonoBehaviour
 
     private bool isBlocking = false;
 
+    private PlayerHealth playerHealth;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -64,11 +67,15 @@ public class PlayerCombat : MonoBehaviour
     {
         if (blocked)
         {
-            animator.SetTrigger("block_Hit");
+            animator.SetTrigger("Block_Hit");
         }
         else
         {
-            animator.SetTrigger("hitted");
+            animator.SetTrigger("Hit-B");
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(10); 
+            }
         }
     }
 

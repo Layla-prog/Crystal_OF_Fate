@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth;
 
-    private PlayerHealthUI healthUI;
+    public PlayerHealthUI healthUI;
 
     // Event triggered when damage is taken
     public System.Action<float> OnDamaged;
@@ -17,7 +17,19 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
 
-        healthUI = GetComponent<PlayerHealthUI>();
+        //healthUI = GetComponent<PlayerHealthUI>();
+
+        if (healthUI == null)
+        {
+            healthUI = GetComponentInChildren<PlayerHealthUI>();
+
+            if (healthUI == null)
+            {
+                Debug.LogWarning("PlayerHealthUI not assigned and not found in children!");
+            }
+        }
+
+        healthUI?.ShowHealthBar(currentHealth / maxHealth);
     }
 
     public void TakeDamage(float damage)
@@ -36,6 +48,6 @@ public class PlayerHealth : MonoBehaviour
     public void RestoreHealth(float amount)
     {
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
-        healthUI.ShowHealthBar(currentHealth / maxHealth);
+        healthUI?.ShowHealthBar(currentHealth / maxHealth);
     }
 }
