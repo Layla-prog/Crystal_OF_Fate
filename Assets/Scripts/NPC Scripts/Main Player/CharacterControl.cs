@@ -59,9 +59,9 @@ public class CharacterControl : MonoBehaviour
 
         if (controller.isGrounded)
         {
-            moveDirection = inputDirection * speed;
+			moveDirection = inputDirection * speed;
 
-            if (Input.GetButtonDown("Jump"))
+			if (Input.GetButtonDown("Jump"))
             {
                 moveDirection.y = jumpPower;
             }

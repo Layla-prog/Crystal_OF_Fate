@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: mage_texture
-    second: {fileID: -6565442159171177796, guid: 2c7116bfd2857d24eaa4c780339324cc, type: 3}
+    second: {fileID: -6565442159171177796, guid: 0030caf68a4f398448a026ae79167e8a, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -79,11 +79,12 @@ public class GoblinAI : MonoBehaviour
         Vector3 direction = (currentTarget.position - transform.position).normalized;
         direction.y = 0f;
 
+        FaceTarget();
+
         //float stopBuffer = 0.3f;
 
         if (distance <= detectRange)
         {
-            FindNearestTarget();
 
             if (distance > attackRange)
             {
@@ -101,6 +102,11 @@ public class GoblinAI : MonoBehaviour
                     attackTimer = attackCooldown;
                 }
             }
+        }
+        else
+        {
+            animator.SetFloat("Speed", 0f);
+            controller.SimpleMove(Vector3.zero);
         }
 
         attackTimer -= Time.deltaTime;
