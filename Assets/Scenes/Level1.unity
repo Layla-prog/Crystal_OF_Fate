@@ -1194,7 +1194,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 281.5, y: -114.1}
+  m_AnchoredPosition: {x: 325, y: -141}
   m_SizeDelta: {x: 115.36, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429699636
@@ -1407,7 +1407,6 @@ GameObject:
   - component: {fileID: 490746639}
   - component: {fileID: 490746638}
   - component: {fileID: 490746642}
-  - component: {fileID: 490746643}
   m_Layer: 10
   m_Name: PlayerCanvas
   m_TagString: Untagged
@@ -1521,20 +1520,6 @@ MonoBehaviour:
   healthBarRoot: {fileID: 1695790550}
   fillImage: {fileID: 231981192}
   hideDelay: 3
---- !u!114 &490746643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490746634}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2f4d7525dd89546b7532e1844a0e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  fillImage: {fileID: 231981192}
 --- !u!4 &515018100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2428443958506694940, guid: a7c8f93cc90dc7f4e9e2904d1d90fff8, type: 3}
@@ -2359,7 +2344,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 974618588}
-  - component: {fileID: 974618589}
   m_Layer: 0
   m_Name: HealthBars
   m_TagString: Untagged
@@ -2384,20 +2368,6 @@ Transform:
   m_Father: {fileID: 468685891}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &974618589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974618587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4976d387ec42fe8418e9c95f7b7062d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  barPrefab: {fileID: 0}
-  container: {fileID: 0}
 --- !u!1 &1021259723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,7 +2535,6 @@ GameObject:
   - component: {fileID: 1034898901}
   - component: {fileID: 1034898900}
   - component: {fileID: 1034898897}
-  - component: {fileID: 1034898904}
   m_Layer: 5
   m_Name: EnemyCanvas
   m_TagString: Untagged
@@ -2679,20 +2648,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1034898904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1034898896}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2f4d7525dd89546b7532e1844a0e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  fillImage: {fileID: 285633056}
 --- !u!1 &1054477890
 GameObject:
   m_ObjectHideFlags: 0
@@ -4305,20 +4260,6 @@ MonoBehaviour:
   patrolPoints: []
   patrolWaitTime: 2
   detectionRadius: 19
---- !u!114 &1324177817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324177805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2f4d7525dd89546b7532e1844a0e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  fillImage: {fileID: 285633056}
 --- !u!1 &1336210340
 GameObject:
   m_ObjectHideFlags: 0
@@ -5143,7 +5084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 154.5, y: -111.6}
+  m_AnchoredPosition: {x: 183, y: -139}
   m_SizeDelta: {x: 122.4973, y: 30}
   m_Pivot: {x: 0.5, y: 0.49999997}
 --- !u!114 &1907403116
@@ -6827,20 +6768,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &704172245401187546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422288678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2f4d7525dd89546b7532e1844a0e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  fillImage: {fileID: 231981192}
 --- !u!1 &782705684678948782
 GameObject:
   m_ObjectHideFlags: 0
@@ -7543,7 +7470,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: deb_Goblin01
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5029183775007132268, guid: 2decee377de536440aad6e8c002ed6e6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2decee377de536440aad6e8c002ed6e6, type: 3}
 --- !u!4 &3231843394938188087
 Transform:
