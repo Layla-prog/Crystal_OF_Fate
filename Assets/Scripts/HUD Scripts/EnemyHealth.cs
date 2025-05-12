@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float currentHealth;
+    public string characterName = "Default";
 
     public EnemyHealthUI healthUI;
 
@@ -19,6 +20,8 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damage;
         currentHealth = Mathf.Max(0, currentHealth);
+
+        //TopHealthBarManager.Instance.ShowHealthBar(gameObject.name, currentHealth / maxHealth);
 
         if (healthUI != null)
         {

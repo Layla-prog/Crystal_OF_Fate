@@ -35,10 +35,9 @@ public class MirokuCraftPotion : MonoBehaviour
     {
         isCrafting = true;
 
-        // Play crafting animation
         animator.SetTrigger("Craft");
 
-        yield return new WaitForSeconds(2.0f); // Adjust to match crafting animation
+        yield return new WaitForSeconds(2.0f); 
 
         // Select correct prefab
         GameObject potionPrefab = null;
@@ -56,7 +55,7 @@ public class MirokuCraftPotion : MonoBehaviour
 
         // Spawn potion in hand
         GameObject potion = Instantiate(potionPrefab, handTransform.position, Quaternion.identity, handTransform);
-        yield return new WaitForSeconds(1.0f); // Holding time before giving
+        yield return new WaitForSeconds(1.0f); 
 
         // Play give animation
         animator.SetTrigger("GivePotion");
@@ -74,7 +73,7 @@ public class MirokuCraftPotion : MonoBehaviour
             yield return null;
         }
 
-        potion.transform.SetParent(giveTarget);
+        potion.transform.SetParent(giveTarget, false);
         potion.transform.localPosition = Vector3.zero;
         potion.transform.localRotation = Quaternion.identity;
 

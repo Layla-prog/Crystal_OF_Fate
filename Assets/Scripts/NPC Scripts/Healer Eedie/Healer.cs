@@ -9,10 +9,17 @@ public class Healer : MonoBehaviour
     public float healThreshold = 70f;
     private PlayerHealth playerHealth;
 
+    public ParticleSystem healingParticles;
+
     void Start()
     {
         playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         playerHealth.OnDamaged += HandlePlayerDamaged;
+
+        if (healingParticles != null)
+        {
+            healingParticles.Stop();
+        }
     }
 
     void HandlePlayerDamaged(float currentHealth)
@@ -26,6 +33,10 @@ public class Healer : MonoBehaviour
     public void StartHealing()
     {
         animator.SetBool("IsHealing", true);
+        if (healingParticles != null)
+        {
+            healingParticles.Play();
+        }
         StartCoroutine(StopHealingAfter(3f)); // heals for 3 seconds
     }
 
@@ -34,6 +45,11 @@ public class Healer : MonoBehaviour
         yield return new WaitForSeconds(time);
         animator.SetBool("IsHealing", false);
         animator.SetTrigger("FinishHeal");
+
+        if (healingParticles != null)
+        {
+            healingParticles.Stop();
+        }
 
         playerHealth.RestoreHealth(healAmount);
     }

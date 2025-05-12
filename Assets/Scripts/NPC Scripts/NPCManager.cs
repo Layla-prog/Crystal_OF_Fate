@@ -21,7 +21,7 @@ public class NPCManager : MonoBehaviour
         //DialogueSystem.instance.ShowDialogue("Archer Kate", "I'm ready to join your quest!");
 
 
-        var follow = npc.GetComponent<KateFollowAndCombat>();
+        /*var follow = npc.GetComponent<KateFollowAndCombat>();
         if (follow != null)
         {
             follow.enabled = true;
@@ -31,7 +31,33 @@ public class NPCManager : MonoBehaviour
 
         archerFollowerInstance.GetComponent<KateFollowAndCombat>().ActivateFollowing();
 
-        //npc.GetComponent<NPC>().enabled = false;
+        //npc.GetComponent<NPC>().enabled = false;*/
+
+        var follow = npc.GetComponent<KateFollowAndCombat>();
+        if (follow != null)
+        {
+            follow.enabled = true;
+        }
+
+        npc.SetActive(false); // Hide static NPC
+
+        archerFollowerInstance = Instantiate(archerFollowerPrefab, npc.transform.position, Quaternion.identity);
+
+        var kateFollowScript = archerFollowerInstance.GetComponent<KateFollowAndCombat>();
+
+        if (kateFollowScript != null)
+        {
+            // Manually assign player reference
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                kateFollowScript.player = playerObj.transform;
+            }
+
+            kateFollowScript.ActivateFollowing();
+        }
+
+        npc.GetComponent<NPC>().enabled = false;
     }
 
     public void HandlePotionCrafting()

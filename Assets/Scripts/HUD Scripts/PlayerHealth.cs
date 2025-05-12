@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float currentHealth;
+    public string characterName = "Default";
 
     public PlayerHealthUI healthUI;
 
@@ -34,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        /*currentHealth -= damage;
 
         //clamp to 0
         currentHealth = Mathf.Max(currentHealth, 0);
@@ -42,7 +43,40 @@ public class PlayerHealth : MonoBehaviour
         //Update the health bar
         healthUI.ShowHealthBar(currentHealth / maxHealth);
 
-        OnDamaged?.Invoke(currentHealth);
+        //OnDamaged?.Invoke(currentHealth);*/
+
+        currentHealth -= damage;
+        Debug.Log("Player took damage: " + damage + ". Current health: " + currentHealth);
+
+        currentHealth = Mathf.Max(0, currentHealth);
+
+        //TopHealthBarManager.Instance.ShowHealthBar(gameObject.name, currentHealth / maxHealth);
+
+        if (healthUI != null)
+        {
+            healthUI.ShowHealthBar(currentHealth / maxHealth);
+        }
+
+        if (currentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log($"{gameObject.name} died.");
+
+        GameOverManager gameOver = FindObjectOfType<GameOverManager>();
+        if (gameOver != null)
+        {
+            gameOver.ShowGameOver();
+        }
+
+        // Optional: Disable movement or animations
+        GetComponent<CharacterController>().enabled = false;
+        GetComponent<PlayerCombat>().enabled = false;
+        this.enabled = false;
     }
 
     public void RestoreHealth(float amount)

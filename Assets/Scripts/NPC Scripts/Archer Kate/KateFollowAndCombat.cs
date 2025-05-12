@@ -6,10 +6,12 @@ using UnityEngine.AI;
 [RequireComponent(typeof(CharacterController))]
 public class KateFollowAndCombat : MonoBehaviour
 {
+    public string characterName = "Kate";
+
     //Follower Setting
     public Transform player;
     public float followSpeed = 3.0f;
-    public float stopDistance = 2f;
+    public float stopDistance = 3.5f;
 
     //Combat Settings
     public float attackRange = 10f;

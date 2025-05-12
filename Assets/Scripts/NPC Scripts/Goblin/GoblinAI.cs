@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GoblinAI : MonoBehaviour
 {
+    public string characterName = "Goblin";
+
     public float detectRange = 10f;
     public float attackRange = 2f;
     public float moveSpeed = 2f;
@@ -17,6 +19,7 @@ public class GoblinAI : MonoBehaviour
     private float attackTimer = 0f;
     private CharacterController controller;
     private bool isDead = false;
+    private bool hasDealtDamage = false;
 
     // Start is called before the first frame update
     void Start()
@@ -100,6 +103,8 @@ public class GoblinAI : MonoBehaviour
                 {
                     animator.SetTrigger("Attack");
                     attackTimer = attackCooldown;
+
+                    DealDamage();
                 }
             }
         }
@@ -182,6 +187,10 @@ public class GoblinAI : MonoBehaviour
              }
          }*/
 
+        if (hasDealtDamage) return;
+
+        hasDealtDamage = true;
+
         if (currentTarget == null) return;
 
         float dist = Vector3.Distance(transform.position, currentTarget.position);
@@ -210,5 +219,10 @@ public class GoblinAI : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ResetDamageFlag()
+    {
+        hasDealtDamage = false;
     }
 }

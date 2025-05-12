@@ -7,19 +7,23 @@ public class EnemyAI : MonoBehaviour
 {
     public Transform[] patrolPoints;
     public float patrolWaitTime = 2f;
-    public float detectionRange = 10f;
+    public float detectionRadius = 19f;
 
     private int currentPatrolIndex;
     private float waitTimer;
-    private Transform player;
     private NavMeshAgent agent;
-    private bool playerDetected = false;
+
+    private Transform currentTarget;
+    private List<Transform> detectedTargets = new List<Transform>();
+
+
+    //private bool playerDetected = false;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        //currentTarget = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         if (patrolPoints.Length > 0)
         {
@@ -30,22 +34,77 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null) return;
+        DetectTargets();
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (PlayerIsDetected())
+        {
+            agent.isStopped = true;
+            FaceTarget();
+        }
+        else
+        {
+            agent.isStopped = false;
+            Patrol();
+        }
 
-        if (distanceToPlayer <= detectionRange)
+        /*if (currentTarget == null) return;
+
+        float distanceToPlayer = Vector3.Distance(transform.position, currentTarget.position);
+
+        if (distanceToPlayer <= detectionRadius)
         {
             playerDetected = true;
             agent.isStopped = true; // Stop moving to patrol points
-            transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z)); // Look at player
+            transform.LookAt(new Vector3(currentTarget.position.x, transform.position.y, currentTarget.position.z)); // Look at player
         }
         else
         {
             playerDetected = false;
             agent.isStopped = false;
             Patrol();
+        }*/
+    }
+
+    void DetectTargets()
+    {
+        detectedTargets.Clear();
+        Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius);
+
+        foreach (var hit in hits)
+        {
+            if (hit.CompareTag("Player"))
+            {
+                detectedTargets.Add(hit.transform);
+            }
         }
+
+        currentTarget = detectedTargets.Count > 0 ? GetNearestTarget() : null;
+    }
+
+    Transform GetNearestTarget()
+    {
+        Transform closest = null;
+        float minDist = Mathf.Infinity;
+
+        foreach (var target in detectedTargets)
+        {
+            float dist = Vector3.Distance(transform.position, target.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = target;
+            }
+        }
+        return closest;
+    }
+
+    void FaceTarget()
+    {
+        if (currentTarget == null) return;
+
+        Vector3 lookPos = currentTarget.position - transform.position;
+        lookPos.y = 0;
+        transform.rotation = Quaternion.LookRotation(lookPos);
     }
 
     void Patrol()
@@ -65,11 +124,11 @@ public class EnemyAI : MonoBehaviour
 
     public bool PlayerIsDetected()
     {
-        return playerDetected;
+        return currentTarget != null;
     }
 
     public Transform GetPlayer()
     {
-        return player;
+        return currentTarget;
     }
 }

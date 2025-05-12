@@ -6,7 +6,7 @@ public class MirokuInteraction : MonoBehaviour
 {
     public GameObject potionPrefab;
     public Transform handAnchor;
-    public Transform giveTarget; // Where the potion ends up (e.g. player's hand)
+    public Transform giveTarget; 
     private GameObject heldPotion;
 
     private Animator animator;
@@ -46,7 +46,7 @@ public class MirokuInteraction : MonoBehaviour
 
         // Find the player's PotionAnchor
         GameObject player = GameObject.FindWithTag("Player");
-        Transform playerHandAnchor = player.transform.Find("hips/handslot.l/PotionAnchor");
+        Transform playerHandAnchor = player.transform.Find("hips/spine/chest/head/upperarm.l/lowerarm.l/wrist.l/hand.l/handslot.l/PotionAnchor");
 
         if (playerHandAnchor != null)
         {

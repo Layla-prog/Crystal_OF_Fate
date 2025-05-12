@@ -254,7 +254,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: UseItem
+    m_ConditionEvent: Use_Item
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6561891914652475386}
@@ -560,7 +560,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: UseItem
+  - m_Name: Use_Item
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0

@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4083679350173494}
   - component: {fileID: -8044199996750501390}
+  - component: {fileID: 7579043207686873830}
   m_Layer: 0
   m_Name: GPVFX_POTION D
   m_TagString: Untagged
@@ -127,7 +128,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305883699301654}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 5510601d7bb3dab49bc0150a482a6a8b, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 10476cfe09ae24a3599aabad8e153a90, type: 3}
   m_Controller: {fileID: 9100000, guid: 1a93f075f259e194f875cab2583839b2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -139,6 +140,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7579043207686873830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305883699301654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25cecb2101608b48a0886d1fe6148a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 8
+  damage: 15
 --- !u!1 &1355227736585190
 GameObject:
   m_ObjectHideFlags: 0

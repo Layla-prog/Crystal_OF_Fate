@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CharacterControl : MonoBehaviour
 {
+    public string characterName = "Player";
+
     public float jogSpeed = 2f;
     public float runSpeed = 4f;
     public float jumpPower = 8f;
     public float gravity = 20f;
     public float turnSpeed = 10f;
+
+    public GameObject floatingTextPrefab;
+    public AudioSource audioSource;
+    public AudioClip drinkSFX;
 
     private float xInput, zInput;
 
@@ -39,6 +46,11 @@ public class CharacterControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("E key pressed");
+        }
+
         //Get movement Input
         xInput = Input.GetAxis("Horizontal");
 
@@ -85,17 +97,21 @@ public class CharacterControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Transform potion = transform.Find("hips/handslot.l/PotionAnchor/Potion(Clone)");
-            if (potion != null && !string.IsNullOrEmpty(storedPotionType))
+            Transform anchor = transform.Find("hips/spine/chest/head/upperarm.l/lowerarm.l/wrist.l/hand.l/handslot.l/PotionAnchor");
+            Transform potion = (anchor != null && anchor.childCount > 0) ? anchor.GetChild(0) : null;
+
+            if (potion != null)
             {
-                animator.SetTrigger("UseItem");
-                if (storedPotionType == "Strength")
+                DrinkPotion();
+                animator.SetTrigger("Use_Item");
+
+                if (potion.CompareTag("StrengthPotion"))
                 {
                     StartCoroutine(ApplyStrengthBoost());
                 }
-                else if (storedPotionType == "Stamina")
+                else if (potion.CompareTag("StaminaPotion"))
                 {
-                    StartCoroutine (ApplyStaminaBoost());
+                    StartCoroutine(ApplyStaminaBoost());
                 }
 
                 Destroy(potion.gameObject); // Remove the potion after use
@@ -112,6 +128,7 @@ public class CharacterControl : MonoBehaviour
 
     IEnumerator ApplyStrengthBoost()
     {
+        ShowFloatingText("Strength Boost!");
         Debug.Log("Strength Boost Activated!");
         runSpeed *= 1.5f;
         yield return new WaitForSeconds(10f);
@@ -120,9 +137,27 @@ public class CharacterControl : MonoBehaviour
 
     IEnumerator ApplyStaminaBoost()
     {
+        ShowFloatingText("Stamina Boost!");
         Debug.Log("Stamina Boost Activated!");
         jogSpeed *= 1.5f;
         yield return new WaitForSeconds(10f);
         jogSpeed = baseJogSpeed;
+    }
+
+    void ShowFloatingText(string message)
+    {
+        if (floatingTextPrefab != null)
+        {
+            GameObject textObj = Instantiate(floatingTextPrefab, transform.position + Vector3.up * 2f, Quaternion.identity);
+            textObj.GetComponent<TextMeshPro>().text = message;
+        }
+    }
+
+    void DrinkPotion()
+    {
+        if (audioSource != null && drinkSFX != null)
+        {
+            audioSource.PlayOneShot(drinkSFX);
+        }
     }
 }

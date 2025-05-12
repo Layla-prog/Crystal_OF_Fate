@@ -84,7 +84,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6565442159171177796, guid: 2c7116bfd2857d24eaa4c780339324cc, type: 3}
+  - {fileID: 2100000, guid: 74627cb9ae7bb8840b79c39515d8ea00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -631,7 +631,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6565442159171177796, guid: 2c7116bfd2857d24eaa4c780339324cc, type: 3}
+  - {fileID: 2100000, guid: 74627cb9ae7bb8840b79c39515d8ea00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -737,7 +737,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6565442159171177796, guid: 2c7116bfd2857d24eaa4c780339324cc, type: 3}
+  - {fileID: 2100000, guid: 74627cb9ae7bb8840b79c39515d8ea00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1251,7 +1251,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6565442159171177796, guid: 2c7116bfd2857d24eaa4c780339324cc, type: 3}
+  - {fileID: 2100000, guid: 74627cb9ae7bb8840b79c39515d8ea00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1398,7 +1398,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6565442159171177796, guid: 2c7116bfd2857d24eaa4c780339324cc, type: 3}
+  - {fileID: 2100000, guid: 74627cb9ae7bb8840b79c39515d8ea00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1481,7 +1481,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6565442159171177796, guid: 2c7116bfd2857d24eaa4c780339324cc, type: 3}
+  - {fileID: 2100000, guid: 74627cb9ae7bb8840b79c39515d8ea00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1722,7 +1722,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6565442159171177796, guid: 2c7116bfd2857d24eaa4c780339324cc, type: 3}
+  - {fileID: 2100000, guid: 74627cb9ae7bb8840b79c39515d8ea00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1861,7 +1861,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6565442159171177796, guid: 2c7116bfd2857d24eaa4c780339324cc, type: 3}
+  - {fileID: 2100000, guid: 74627cb9ae7bb8840b79c39515d8ea00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2209,7 +2209,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6565442159171177796, guid: 2c7116bfd2857d24eaa4c780339324cc, type: 3}
+  - {fileID: 2100000, guid: 74627cb9ae7bb8840b79c39515d8ea00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2461,7 +2461,6 @@ GameObject:
   - component: {fileID: 7165384025061351880}
   - component: {fileID: 7165384025061351881}
   - component: {fileID: 7165384025061351882}
-  - component: {fileID: 3048079916921514838}
   m_Layer: 0
   m_Name: Eedie
   m_TagString: Untagged
@@ -2567,27 +2566,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
---- !u!95 &3048079916921514838
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8048468129429354111}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a7c8f93cc90dc7f4e9e2904d1d90fff8, type: 3}
-  m_Controller: {fileID: 9100000, guid: 93cdcebe35caca046ad8b1f5bafd6209, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  characterName: Default
+  healthUI: {fileID: 0}
 --- !u!1 &8058163447154749193
 GameObject:
   m_ObjectHideFlags: 0

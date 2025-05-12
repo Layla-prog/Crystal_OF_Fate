@@ -14,6 +14,14 @@ public class PlayerHealthUI : MonoBehaviour
 
     public void ShowHealthBar(float healthPercent)
     {
+        if (healthBarRoot == null || fillImage == null)
+        {
+            Debug.LogWarning("Missing health bar references!");
+            return;
+        }
+
+        Debug.Log("Showing Player Health Bar");
+
         healthBarRoot.SetActive(true);
         fillImage.fillAmount = healthPercent;
 
@@ -31,5 +39,12 @@ public class PlayerHealthUI : MonoBehaviour
         healthBarRoot.SetActive(false);
     }
 
-   
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (healthBarRoot != null)
+        {
+            healthBarRoot.SetActive(false); // Start hidden
+        }
+    }
 }
