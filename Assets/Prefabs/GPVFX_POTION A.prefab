@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 8213392424242128054}
   - component: {fileID: 278655647341465863}
   - component: {fileID: -6807470493464715010}
-  - component: {fileID: 5031500026107704157}
+  - component: {fileID: -5572121081416283563}
   m_Layer: 9
   m_Name: GPVFX_POTION A
   m_TagString: Untagged
@@ -369,7 +369,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &5031500026107704157
+--- !u!114 &-5572121081416283563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,5 +382,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  damage: 10
+  damage: 8
   maxLifetime: 5

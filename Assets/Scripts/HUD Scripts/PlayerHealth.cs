@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        /*currentHealth -= damage;
+        currentHealth -= damage;
 
         //clamp to 0
         currentHealth = Mathf.Max(currentHealth, 0);
@@ -43,9 +43,9 @@ public class PlayerHealth : MonoBehaviour
         //Update the health bar
         healthUI.ShowHealthBar(currentHealth / maxHealth);
 
-        //OnDamaged?.Invoke(currentHealth);*/
+        OnDamaged?.Invoke(currentHealth);
 
-        currentHealth -= damage;
+        /*currentHealth -= damage;
         Debug.Log("Player took damage: " + damage + ". Current health: " + currentHealth);
 
         currentHealth = Mathf.Max(0, currentHealth);
@@ -60,7 +60,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0f)
         {
             Die();
-        }
+        }*/
     }
 
     private void Die()

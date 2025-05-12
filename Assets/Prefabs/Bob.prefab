@@ -301,6 +301,8 @@ GameObject:
   - component: {fileID: 417259323656372474}
   - component: {fileID: 417259323656372472}
   - component: {fileID: -6519012808858617914}
+  - component: {fileID: 1860780921}
+  - component: {fileID: 1860780922}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -315,7 +317,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651631016991951982}
-  m_LocalRotation: {x: -0, y: 0.9957424, z: -0, w: 0.09217974}
+  m_LocalRotation: {x: 0, y: 0.99574244, z: 0, w: 0.0921795}
   m_LocalPosition: {x: 208.81, y: 144.42, z: -91.1546}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -383,6 +385,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1860780921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651631016991951982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 436afb0cec43be44c8b274a2acc7bc2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcName: Crafty Bob
+  dialogueData: {fileID: 11400000, guid: 00750d0f5f057b04890041cd3a65ed0e, type: 2}
+  npcType: 0
+--- !u!114 &1860780922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651631016991951982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea4c40932d79ea41aa03d148dbae8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 0}
+  nameText: {fileID: 0}
+  dialogueText: {fileID: 0}
 --- !u!1 &679675327821960472
 GameObject:
   m_ObjectHideFlags: 0

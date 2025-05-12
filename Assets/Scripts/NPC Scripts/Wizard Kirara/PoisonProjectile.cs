@@ -5,7 +5,7 @@ using UnityEngine;
 public class PoisonProjectile : MonoBehaviour
 {
     public float speed = 8f;
-    public float damage = 10f;
+    public float damage = 8f;
     public float maxLifetime = 5f;
     
     private Transform target;
