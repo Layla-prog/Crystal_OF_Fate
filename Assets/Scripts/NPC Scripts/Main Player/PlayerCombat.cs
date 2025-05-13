@@ -74,20 +74,9 @@ public class PlayerCombat : MonoBehaviour
             animator.SetTrigger("Hit-B");
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(10); 
+                //playerHealth.TakeDamage(10); 
             }
         }
     }
 
-    void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null) return;
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
-
-    public bool IsBlocking()
-    {
-        return isBlocking;
-    }
 }

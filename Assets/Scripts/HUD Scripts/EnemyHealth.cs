@@ -10,6 +10,9 @@ public class EnemyHealth : MonoBehaviour
 
     public EnemyHealthUI healthUI;
 
+    // Event triggered when damage is taken
+    public System.Action<float> OnDamaged;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        currentHealth = Mathf.Max(0, currentHealth);
+        currentHealth = Mathf.Max(currentHealth, 0);
 
         //TopHealthBarManager.Instance.ShowHealthBar(gameObject.name, currentHealth / maxHealth);
 
@@ -27,6 +30,8 @@ public class EnemyHealth : MonoBehaviour
         {
             healthUI.Show(currentHealth / maxHealth);
         }
+
+        OnDamaged?.Invoke(currentHealth);
 
         if (currentHealth <= 0f)
         {
@@ -38,6 +43,13 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{gameObject.name} died.");
+
+        GoblinAI goblin = GetComponent<GoblinAI>();
+        if (goblin != null)
+        {
+            goblin.Die(); // This drops the potion and disables the goblin AI
+        }
+
         Destroy(gameObject);
     }
 

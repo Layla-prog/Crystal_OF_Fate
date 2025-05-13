@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class GoblinAI : MonoBehaviour
 {
@@ -15,33 +14,32 @@ public class GoblinAI : MonoBehaviour
     public int attackDamage = 10;
     public Animator animator;
 
+
+    public GameObject staminaPotionPrefab; 
+    public Transform dropPoint;
+
+
     //private Transform player;
     private Transform currentTarget;
     private float attackTimer = 0f;
     private CharacterController controller;
     private bool isDead = false;
     private bool hasDealtDamage = false;
-    private NavMeshAgent navAgent;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        navAgent = GetComponent<NavMeshAgent>();
+        currentTarget = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isDead) return;
+        if (isDead || currentTarget == null) return;
 
-        FindNearestTarget();
-
-        if (currentTarget == null)
-        {
-            return;
-        }
+        //FindNearestTarget();
 
         float distance = Vector3.Distance(transform.position, currentTarget.position);
         Vector3 direction = (currentTarget.position - transform.position).normalized;
@@ -158,6 +156,15 @@ public class GoblinAI : MonoBehaviour
         animator.SetBool("IsDead", true);
         this.enabled = false;
         controller.enabled = false;
+
+        Debug.Log("Goblin died. Dropping potion.");
+        // drop potion
+        if (staminaPotionPrefab != null)
+        {
+            Vector3 dropPosition = transform.position + Vector3.up * 1.0f; // 1 unit above ground
+            Instantiate(staminaPotionPrefab, dropPosition, Quaternion.identity);
+            //Instantiate(staminaPotionPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     public void DealDamage()
@@ -178,19 +185,11 @@ public class GoblinAI : MonoBehaviour
                 var playerHealth = currentTarget.GetComponent<PlayerHealth>();
                 if (playerCombat != null)
                 {
-                    playerCombat.TakeHit(playerCombat.IsBlocking());
+                    playerCombat.TakeHit(false);
                 }
                 if (playerHealth != null)
                 {
                     playerHealth.TakeDamage(attackDamage);
-                }
-            }
-            else if (currentTarget.CompareTag("Ally"))
-            {
-                var npcCombat = currentTarget.GetComponent<NPCCombat>();
-                if (npcCombat != null)
-                {
-                    npcCombat.TakeDamage(attackDamage);
                 }
             }
         }

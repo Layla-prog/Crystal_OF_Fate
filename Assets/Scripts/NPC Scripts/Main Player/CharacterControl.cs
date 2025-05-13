@@ -13,6 +13,9 @@ public class CharacterControl : MonoBehaviour
     public float gravity = 20f;
     public float turnSpeed = 10f;
 
+    public float stamina = 100f;
+    public float maxStamina = 100f;
+
     public Canvas uiCanvas; 
     public GameObject FloatingTextPrefab;
     public AudioSource audioSource;
@@ -33,6 +36,8 @@ public class CharacterControl : MonoBehaviour
 
     private string storedPotionType = null;
 
+    private GameObject nearbyPotion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +52,13 @@ public class CharacterControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("CharacterControl Update running");
+        if (nearbyPotion != null && Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetTrigger("PickUp");
+            StartCoroutine(ConsumeGroundPotion(nearbyPotion));
+            nearbyPotion = null;
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -105,6 +116,8 @@ public class CharacterControl : MonoBehaviour
             Transform anchor = transform.Find("Rig/root/hips/spine/chest/upperarm.l/lowerarm.l/wrist.l/hand.l/handslot.l/PotionAnchor");
             Debug.Log("Anchor found: " + (anchor != null));
 
+
+
             Transform potion = (anchor != null && anchor.childCount > 0) ? anchor.GetChild(0) : null;
             Debug.Log("Potion found: " + (potion != null));
 
@@ -130,6 +143,22 @@ public class CharacterControl : MonoBehaviour
             }
         }
     }
+
+    private IEnumerator ConsumeGroundPotion(GameObject potion)
+    {
+        // Wait for pickup animation to finish
+        yield return new WaitForSeconds(1.0f);
+
+        // Play drink sound
+        DrinkPotion();
+
+        // Start stamina boost effect
+        StartCoroutine(ApplyStaminaBoost());
+
+        // Destroy the potion object
+        Destroy(potion);
+    }
+
 
     public void SetCurrentPotionType(string type)
     {
@@ -183,6 +212,24 @@ public class CharacterControl : MonoBehaviour
         if (audioSource != null && drinkSFX != null)
         {
             audioSource.PlayOneShot(drinkSFX);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("StaminaPotion"))
+        {
+            nearbyPotion = other.gameObject;
+            Debug.Log("Potion nearby. Press E to pick it up.");
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("StaminaPotion"))
+        {
+            if (nearbyPotion == other.gameObject)
+                nearbyPotion = null;
         }
     }
 }
