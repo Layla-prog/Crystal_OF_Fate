@@ -55,12 +55,12 @@ public class PlayerHealth : MonoBehaviour
         if (healthUI != null)
         {
             healthUI.ShowHealthBar(currentHealth / maxHealth);
-        }
+        }*/
 
         if (currentHealth <= 0f)
         {
             Die();
-        }*/
+        }
     }
 
     private void Die()
@@ -77,6 +77,8 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<CharacterController>().enabled = false;
         GetComponent<PlayerCombat>().enabled = false;
         this.enabled = false;
+
+        Destroy(gameObject, 2f);
     }
 
     public void RestoreHealth(float amount)

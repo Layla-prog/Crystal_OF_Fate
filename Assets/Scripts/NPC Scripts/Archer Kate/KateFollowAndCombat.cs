@@ -113,43 +113,14 @@ public class KateFollowAndCombat : MonoBehaviour
 
     void HandleFollow(float distance)
     {
-        /*if (player == null || animator == null || characterController == null) return;
-
-        Vector3 direction = player.position - transform.position;
-        direction.y = 0f;
-
-        float dist = direction.magnitude;
-
-        if (dist > stopDistance)
-        {
-            Vector3 moveDir = direction.normalized * followSpeed;
-            Vector3 movement = moveDir * Time.deltaTime;
-
-            characterController.Move(movement);
-
-            if (moveDir != Vector3.zero)
-            {
-                Quaternion targetRot = Quaternion.LookRotation(moveDir, Vector3.up);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 10f * Time.deltaTime);
-            }
-
-            animator.SetFloat("Speed", moveDir.magnitude); 
-        }
-        else
-        {
-            animator.SetFloat("Speed", 0f);
-        }*/
-       
         if (player == null || animator == null || characterController == null) return;
 
         Vector3 direction = player.position - transform.position;
         direction.y = 0f;
 
-        //float distToPlayer = direction.magnitude;
-        
 
-        if (distance > stopDistance)
-        {
+        //if (distance > stopDistance)
+        //{
             Vector3 moveDir = direction.normalized;
             Vector3 movement = moveDir * followSpeed;
 
@@ -164,17 +135,28 @@ public class KateFollowAndCombat : MonoBehaviour
 
             movement.y = verticalVelocity; // Apply gravity
 
-            // Avoid collisions with enemies when moving
-            
+        // Avoid collisions with enemies when moving
+        if (distance > stopDistance + 0.5f)
+        {
             characterController.Move(movement * Time.deltaTime);
 
             if (moveDir != Vector3.zero)
             {
-                //Quaternion targetRot = Quaternion.LookRotation(moveDir, Vector3.up);
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), 10f * Time.deltaTime);
             }
             
             animator.SetFloat("Speed", moveDir.magnitude);
+        }
+        else if (distance < stopDistance - 0.5f) // Too close: back away
+        {
+            Vector3 backOffDir = -moveDir * followSpeed;
+            backOffDir.y = verticalVelocity;
+
+            characterController.Move(backOffDir * Time.deltaTime);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(-moveDir), 10f * Time.deltaTime);
+
+            animator.SetFloat("Speed", followSpeed);
         }
         else
         {

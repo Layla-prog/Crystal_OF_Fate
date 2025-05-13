@@ -67,6 +67,7 @@ public class Healer : MonoBehaviour
         if (currentHealth < healThreshold && !isHealing)
         {
             Debug.Log("Player health below threshold, healer moving.");
+            StopAllCoroutines();
             MoveToPlayerAndHeal();
         }
     }
@@ -86,24 +87,15 @@ public class Healer : MonoBehaviour
             // Keep at the safe distance and stop moving
             Vector3 directionToPlayer = (playerHealth.transform.position - transform.position).normalized;
             Vector3 safePosition = playerHealth.transform.position - directionToPlayer * followDistance;
-            agent.SetDestination(safePosition);
+            if (Vector3.Distance(agent.destination, safePosition) > 0.5f)
+            {
+                agent.SetDestination(safePosition);
+            }
         }
     }
 
     void MoveToPlayerAndHeal()
     {
-        //Debug.Log("Moving towards player at position: " + playerHealth.transform.position);
-
-        //isHealing = true;
-
-        //// Move towards the player
-        //agent.SetDestination(playerHealth.transform.position);
-
-        //// Wait until the healer is close enough to heal
-        //StartCoroutine(MoveAndHeal());
-
-        isHealing = true;
-
         Vector3 targetPos = playerHealth.transform.position;
         NavMeshHit hit;
         if (NavMesh.SamplePosition(targetPos, out hit, 2f, NavMesh.AllAreas))
@@ -121,8 +113,6 @@ public class Healer : MonoBehaviour
 
     IEnumerator MoveAndHeal()
     {
-        isHealing = true;
-
         // Set destination toward player
         agent.SetDestination(playerHealth.transform.position);
         Debug.Log("Destination set to player: " + playerHealth.transform.position);
@@ -134,12 +124,14 @@ public class Healer : MonoBehaviour
             yield return null;
         }
 
+        isHealing = true;
+
         // Stop agent
         agent.ResetPath();
         animator.SetFloat("Speed", 0f);
 
-        while (playerHealth.currentHealth < 100f)
-        {
+        //while (playerHealth.currentHealth < 100f)
+        //{
             // Play heal animation and particles
             animator.SetBool("IsHealing", true);
             if (healingParticles != null) healingParticles.Play();
@@ -154,41 +146,41 @@ public class Healer : MonoBehaviour
             animator.SetBool("IsHealing", false);
             if (healingParticles != null) healingParticles.Stop();
 
-            playerHealth.RestoreHealth(healAmountToApply);
+            playerHealth.RestoreHealth(healAmount);
             Debug.Log("Healer healed player by " + healAmount);
 
-            yield return new WaitForSeconds(3f);
-        }
+            //yield return new WaitForSeconds(3f);
+        //}
 
         isHealing = false;
 
     }
 
 
-    public void StartHealing()
-    {
-        animator.SetBool("IsHealing", true);
-        if (healingParticles != null)
-        {
-            healingParticles.Play();
-        }
-        StartCoroutine(StopHealingAfter(3f)); // heals for 3 seconds
-    }
+    //public void StartHealing()
+    //{
+    //    animator.SetBool("IsHealing", true);
+    //    if (healingParticles != null)
+    //    {
+    //        healingParticles.Play();
+    //    }
+    //    StartCoroutine(StopHealingAfter(3f)); // heals for 3 seconds
+    //}
 
-    IEnumerator StopHealingAfter(float time)
-    {
-        yield return new WaitForSeconds(time);
-        animator.SetBool("IsHealing", false);
-        animator.SetTrigger("FinishHeal");
+    //IEnumerator StopHealingAfter(float time)
+    //{
+    //    yield return new WaitForSeconds(time);
+    //    animator.SetBool("IsHealing", false);
+    //    animator.SetTrigger("FinishHeal");
 
-        if (healingParticles != null)
-        {
-            healingParticles.Stop();
-        }
+    //    if (healingParticles != null)
+    //    {
+    //        healingParticles.Stop();
+    //    }
 
-        float missingHealth = 100f - playerHealth.currentHealth;
-        float healAmountToApply = Mathf.Min(healAmount, missingHealth);
+    //    float missingHealth = 100f - playerHealth.currentHealth;
+    //    float healAmountToApply = Mathf.Min(healAmount, missingHealth);
 
-        playerHealth.RestoreHealth(healAmountToApply);
-    }
+    //    //playerHealth.RestoreHealth(healAmount);
+    //}
 }

@@ -1744,11 +1744,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: 2H_Ranged_Reload
-      takeName: 2H_Ranged_Reload
+      name: 1H_Ranged_Shoot (1)
+      takeName: 1H_Ranged_Shoot
       internalID: -1954687964646988558
       firstFrame: 0
-      lastFrame: 48
+      lastFrame: 32
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

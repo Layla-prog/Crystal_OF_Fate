@@ -13,7 +13,8 @@ public class CharacterControl : MonoBehaviour
     public float gravity = 20f;
     public float turnSpeed = 10f;
 
-    public GameObject floatingTextPrefab;
+    public Canvas uiCanvas; 
+    public GameObject FloatingTextPrefab;
     public AudioSource audioSource;
     public AudioClip drinkSFX;
 
@@ -46,6 +47,8 @@ public class CharacterControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("CharacterControl Update running");
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("E key pressed");
@@ -97,20 +100,28 @@ public class CharacterControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Transform anchor = transform.Find("hips/spine/chest/head/upperarm.l/lowerarm.l/wrist.l/hand.l/handslot.l/PotionAnchor");
+            Debug.Log("E key pressed");
+
+            Transform anchor = transform.Find("Rig/root/hips/spine/chest/upperarm.l/lowerarm.l/wrist.l/hand.l/handslot.l/PotionAnchor");
+            Debug.Log("Anchor found: " + (anchor != null));
+
             Transform potion = (anchor != null && anchor.childCount > 0) ? anchor.GetChild(0) : null;
+            Debug.Log("Potion found: " + (potion != null));
 
             if (potion != null)
             {
+                Debug.Log("Drinking potion...");
                 DrinkPotion();
                 animator.SetTrigger("Use_Item");
 
                 if (potion.CompareTag("StrengthPotion"))
                 {
+                    Debug.Log("Applying strength boost...");
                     StartCoroutine(ApplyStrengthBoost());
                 }
                 else if (potion.CompareTag("StaminaPotion"))
                 {
+                    Debug.Log("Applying stamina boost...");
                     StartCoroutine(ApplyStaminaBoost());
                 }
 
@@ -146,10 +157,24 @@ public class CharacterControl : MonoBehaviour
 
     void ShowFloatingText(string message)
     {
-        if (floatingTextPrefab != null)
+        if (FloatingTextPrefab != null && uiCanvas != null)
         {
-            GameObject textObj = Instantiate(floatingTextPrefab, transform.position + Vector3.up * 2f, Quaternion.identity);
-            textObj.GetComponent<TextMeshPro>().text = message;
+            GameObject textObj = Instantiate(FloatingTextPrefab, uiCanvas.transform);
+            TextMeshProUGUI tmp = textObj.GetComponent<TextMeshProUGUI>();
+            if (tmp != null)
+            {
+                tmp.text = message;
+            }
+            else
+            {
+                Debug.LogWarning("No TextMeshPro component found on floatingTextPrefab.");
+            }
+
+            Destroy(textObj, 2f);
+        }
+        else
+        {
+            Debug.LogWarning("Floating text prefab is not assigned.");
         }
     }
 

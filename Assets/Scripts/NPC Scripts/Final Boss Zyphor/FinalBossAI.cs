@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FinalBossAI : MonoBehaviour
 {
@@ -15,13 +16,20 @@ public class FinalBossAI : MonoBehaviour
 
     private float attackTimer;
     private bool isDead = false;
-    private CharacterController controller;
+    private NavMeshAgent agent;
+
+    // movement dodge offset
+    public float dodgeDistance = 3f;
+    public float dodgeSpeed = 5f;
+    private bool isDodging = false;
+    private Vector3 dodgeTarget;
+
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        controller = GetComponent<CharacterController>();
+        agent = GetComponent<NavMeshAgent>();
 
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -38,11 +46,11 @@ public class FinalBossAI : MonoBehaviour
 
         if (distance <= detectRange && distance > attackRange)
         {
-            animator.SetFloat("Speed", 1f);
             MoveTowardsPlayer();
         }
         else
         {
+            agent.SetDestination(transform.position);
             animator.SetFloat("Speed", 0f);
         }
 
@@ -52,19 +60,14 @@ public class FinalBossAI : MonoBehaviour
             attackTimer = attackCooldown;
         }
 
-        if (animator.GetBool("Phase2"))
-        {
-            TryDodgePlayer();
-        }
-
         attackTimer -= Time.deltaTime;
     }
-
     void MoveTowardsPlayer()
     {
-        Vector3 direction = (player.position - transform.position).normalized;
-        direction.y = 0;
-        controller.SimpleMove(direction * 2.5f);
+        if (!agent.enabled) return;
+
+        agent.SetDestination(player.position);
+        animator.SetFloat("Speed", agent.velocity.magnitude);
     }
 
     void FacePlayer()
@@ -72,46 +75,19 @@ public class FinalBossAI : MonoBehaviour
         Vector3 lookDir = player.position - transform.position;
         lookDir.y = 0;
         if (lookDir != Vector3.zero)
-            transform.forward = lookDir.normalized;
+        {
+            transform.forward = Vector3.Lerp(transform.forward, lookDir.normalized, Time.deltaTime * 10f);
+        }
     }
 
     void ChooseAttack()
     {
-        int attackIndex = Random.Range(0, 2); // 0 = bear_Strike1, 1 = bear_Strike2
+        animator.SetFloat("Speed", 0f);
+        int attackIndex = Random.Range(0, 2); 
         animator.SetInteger("AttackIndex", attackIndex);
         animator.SetTrigger("Attack");
     }
 
-    void TryDodgePlayer()
-    {
-        float dodgeChance = 0.3f;
-        if (Random.value < dodgeChance)
-        {
-            Vector3 dirToPlayer = (player.position - transform.position).normalized;
-            float rand = Random.value;
-
-            Vector3 dodgeDir = Vector3.zero;
-            if (rand < 0.25f) dodgeDir = Vector3.left;
-            else if (rand < 0.5f) dodgeDir = Vector3.right;
-            else if (rand < 0.75f) dodgeDir = Vector3.back;
-            else dodgeDir = Vector3.forward;
-
-            Dodge(dodgeDir);
-        }
-    }
-
-    public void Dodge(Vector3 direction)
-    {
-        if (isDead) return;
-
-        string trigger = "Dodge_";
-        if (direction == Vector3.forward) trigger += "Forward";
-        else if (direction == Vector3.back) trigger += "Backward";
-        else if (direction == Vector3.left) trigger += "Left";
-        else if (direction == Vector3.right) trigger += "Right";
-
-        animator.SetTrigger(trigger);
-    }
 
     public void TakeDamage(float amount)
     {
@@ -119,13 +95,6 @@ public class FinalBossAI : MonoBehaviour
 
         currentHealth -= amount;
         animator.SetTrigger("Hit");
-
-        if (currentHealth <= maxHealth * 0.5f && !animator.GetBool("Phase2"))
-        {
-            animator.SetBool("Phase2", true);
-            // Optional: Play taunt or cheer
-            animator.SetTrigger("Cheer");
-        }
 
         if (currentHealth <= 0f)
         {
@@ -137,7 +106,19 @@ public class FinalBossAI : MonoBehaviour
     {
         isDead = true;
         animator.SetTrigger("Die");
-        controller.enabled = false;
+        agent.isStopped = true;
         this.enabled = false;
+    }
+
+    public void DealDamage()
+    {
+        if (player != null)
+        {
+            var target = player.GetComponent<PlayerHealth>();
+            if (target != null)
+            {
+                target.TakeDamage(25f);
+            }
+        }
     }
 }

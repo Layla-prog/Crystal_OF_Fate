@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GoblinAI : MonoBehaviour
 {
@@ -20,55 +21,19 @@ public class GoblinAI : MonoBehaviour
     private CharacterController controller;
     private bool isDead = false;
     private bool hasDealtDamage = false;
+    private NavMeshAgent navAgent;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
-
-        //player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        animator = GetComponent<Animator>();
+        navAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (isDead || player == null) return;
-
-        float distance = Vector3.Distance(transform.position, player.position);
-        Vector3 direction = (player.position - transform.position).normalized;
-        direction.y = 0;
-
-        float stopBuffer = 0.3f;
-
-        if (distance <= detectRange)
-        {
-            FacePlayer();
-
-            if (distance > attackRange + stopBuffer)
-            {
-                Vector3 move = direction * moveSpeed;
-                controller.SimpleMove(move); // uses gravity, smoother than .Move
-                animator.SetFloat("Speed", 1f); // Triggers walk
-            }
-            else
-            {
-                animator.SetFloat("Speed", 0f); // Stop walking
-
-                if (attackTimer <= 0f)
-                {
-                    animator.SetTrigger("Attack");
-                    attackTimer = attackCooldown;
-                }
-            }
-        }
-        else
-        {
-            animator.SetFloat("Speed", 0f);
-            controller.SimpleMove(Vector3.zero);
-        }
-
-        attackTimer -= Time.deltaTime;*/
-
         if (isDead) return;
 
         FindNearestTarget();
@@ -81,6 +46,10 @@ public class GoblinAI : MonoBehaviour
         float distance = Vector3.Distance(transform.position, currentTarget.position);
         Vector3 direction = (currentTarget.position - transform.position).normalized;
         direction.y = 0f;
+
+        //Avoid overlapping
+        Vector3 avoidanceForce = AvoidanceForce();
+        direction = (direction + avoidanceForce).normalized;
 
         FaceTarget();
 
@@ -151,17 +120,35 @@ public class GoblinAI : MonoBehaviour
 
     void FaceTarget()
     {
-        /*Vector3 lookDir = player.position - transform.position;
-        lookDir.y = 0;
-        if (lookDir != Vector3.zero)
-            transform.forward = lookDir.normalized;*/
-
         if (currentTarget == null) return;
 
         Vector3 lookDir = currentTarget.position - transform.position;
         lookDir.y = 0;
         if (lookDir != Vector3.zero)
             transform.forward = lookDir.normalized;
+    }
+
+    private Vector3 AvoidanceForce()
+    {
+        Vector3 repulsion = Vector3.zero;
+
+        // Find nearby NPCs (those tagged as "Ally")
+        Collider[] nearbyNPCs = Physics.OverlapSphere(transform.position, 2f);
+        foreach (var col in nearbyNPCs)
+        {
+            if (col.gameObject != gameObject && col.CompareTag("Ally"))
+            {
+                // Calculate the direction away from the NPC
+                Vector3 awayFromNPC = transform.position - col.transform.position;
+                if (awayFromNPC.magnitude > 0.01f)
+                {
+                    // Add a repulsion force (can tweak the strength)
+                    repulsion += awayFromNPC.normalized / awayFromNPC.magnitude;
+                }
+            }
+        }
+
+        return repulsion.normalized * 1f;
     }
 
     public void Die()
@@ -175,18 +162,6 @@ public class GoblinAI : MonoBehaviour
 
     public void DealDamage()
     {
-        /* if (player == null) return;
-
-         float dist = Vector3.Distance(transform.position, player.position);
-         if (dist <= attackRange + 0.2f)
-         {
-             PlayerCombat combat = player.GetComponent<PlayerCombat>();
-             if (combat != null)
-             {
-                 combat.TakeHit(combat.IsBlocking()); // Add IsBlocking() method if needed
-             }
-         }*/
-
         if (hasDealtDamage) return;
 
         hasDealtDamage = true;
