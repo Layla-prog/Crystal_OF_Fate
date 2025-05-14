@@ -22,7 +22,7 @@ public class KateFollowAndCombat : MonoBehaviour
     public Transform firePoint;
     public LayerMask enemyLayer;
 
-    public Vector3 followOffset = new Vector3(1.5f, 0, -1.5f); // Slightly to the right and back
+    public Vector3 followOffset = new Vector3(1.5f, 0, -1.5f); // move Slightly to the right and back
 
 
     private float lastAttackTime;
@@ -83,23 +83,10 @@ public class KateFollowAndCombat : MonoBehaviour
         }
 
         float distance = Vector3.Distance(transform.position, player.position);
-        //float moveSpeed = (distance > stopDistance) ? followSpeed : 0f;
-
-        //animator.SetFloat("Speed", moveSpeed);
 
         HandleFollow(distance);
 
         GameObject enemy = FindNearestEnemy();
-
-        /*if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= attackRange)
-        {
-            EnemyHealth eh = enemy.GetComponent<EnemyHealth>();
-            if (eh != null && eh.currentHealth > 0)
-            {
-                Attack(enemy);
-                return;
-            }
-        }*/
 
         if (enemy != null)
         {
@@ -118,15 +105,10 @@ public class KateFollowAndCombat : MonoBehaviour
     {
         if (player == null || animator == null || characterController == null) return;
 
-        /*Vector3 direction = player.position - transform.position;
-        direction.y = 0f;*/ //
 
         Vector3 targetPos = player.position + player.TransformDirection(followOffset);
         Vector3 direction = targetPos - transform.position;
 
-
-        //if (distance > stopDistance)
-        //{
         Vector3 moveDir = direction.normalized;
             Vector3 movement = moveDir * followSpeed;
 
@@ -217,11 +199,6 @@ public class KateFollowAndCombat : MonoBehaviour
             rangedTarget = enemy;
             TriggerRanged();
         }
-
-        /*animator.SetTrigger("isShooting");
-
-        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-        arrow.GetComponent<Rigidbody>().velocity = firePoint.forward * 25f;*/
     }
 
     void TriggerMelee()
@@ -275,9 +252,6 @@ public class KateFollowAndCombat : MonoBehaviour
         }
 
         animator.SetBool("isShooting", true);
-
-        //GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-        //arrow.GetComponent<Rigidbody>().velocity = firePoint.forward * 25f;
 
         GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
 

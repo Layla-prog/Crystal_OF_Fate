@@ -10,28 +10,10 @@ public class ArrowProjectile : MonoBehaviour
 
     private Vector3 direction;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Destroy(gameObject, lifetime);
-    }
-
     public void Initialize(Vector3 dir)
     {
         direction = dir.normalized;
         Destroy(gameObject, lifetime); // optional cleanup
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        /*EnemyHealth enemy = collision.collider.GetComponent<EnemyHealth>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(damage);
-        }*/
-
-        //Destroy(gameObject);
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -58,12 +40,5 @@ public class ArrowProjectile : MonoBehaviour
         {
             Destroy(gameObject); // Destroy arrow if it hits wall etc.
         }
-    }
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -29,12 +29,6 @@ public class MiniMapAllyManager : MonoBehaviour
             GameObject markerPrefab = GetMarkerPrefabByType(npcComponent.npcType);
             if (markerPrefab != null)
             {
-                //GameObject marker = Instantiate(markerPrefab, markerParent);
-                //AllyMiniMapMarker tracker = marker.AddComponent<AllyMiniMapMarker>();
-                //tracker.target = ally.transform;
-                //tracker.markerUI = marker.GetComponent<RectTransform>();
-                //tracker.miniMapCamera = miniMapCamera;
-
                 // Instantiate marker for small minimap
                 GameObject markerSmall = Instantiate(markerPrefab, markerParentSmall);
                 AllyMiniMapMarker trackerSmall = markerSmall.AddComponent<AllyMiniMapMarker>();
@@ -48,7 +42,6 @@ public class MiniMapAllyManager : MonoBehaviour
                 trackerFull.target = ally.transform;
                 trackerFull.markerUI = markerFull.GetComponent<RectTransform>();
                 trackerFull.miniMapCamera = miniMapCamera;
-
             }
         }
         CreatePlayerMarker();
@@ -81,11 +74,5 @@ public class MiniMapAllyManager : MonoBehaviour
             case NPCType.Healer: return healerMarkerPrefab;
             default: return null;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

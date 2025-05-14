@@ -10,13 +10,9 @@ public class PoisonProjectile : MonoBehaviour
     
     private Transform target;
 
-    //private Animator animator;
-    //private bool hasExploded = false;
-    
     // Start is called before the first frame update
     void Start()
     {
-        //animator = GetComponent<Animator>();
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -27,9 +23,6 @@ public class PoisonProjectile : MonoBehaviour
             dir.y = 0f;
             transform.forward = dir;
         }
-
-        // Auto-destroy after some time in case it misses
-        //Destroy(gameObject, maxLifetime);
     }
 
     public void SetTarget(Transform t)
@@ -41,15 +34,10 @@ public class PoisonProjectile : MonoBehaviour
     void Update()
     {
         if (target != null)
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
-    }
-
-        /*if (!hasExploded)
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        }*/
+            Vector3 direction = (target.position - transform.position).normalized;
+            transform.position += direction * speed * Time.deltaTime;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -88,14 +76,6 @@ public class PoisonProjectile : MonoBehaviour
 
     void Explode()
     {
-        /*hasExploded = true;
-        //animator.SetTrigger("Explode");
-
-        if (animator != null)
-        {
-            animator.SetTrigger("Explode");
-        }*/
-
         // You can optionally disable the mesh or collider
         Collider col = GetComponent<Collider>();
         if (col) col.enabled = false;

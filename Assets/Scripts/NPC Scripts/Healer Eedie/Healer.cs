@@ -161,32 +161,4 @@ public class Healer : MonoBehaviour
         isHealing = false;
 
     }
-
-
-    //public void StartHealing()
-    //{
-    //    animator.SetBool("IsHealing", true);
-    //    if (healingParticles != null)
-    //    {
-    //        healingParticles.Play();
-    //    }
-    //    StartCoroutine(StopHealingAfter(3f)); // heals for 3 seconds
-    //}
-
-    //IEnumerator StopHealingAfter(float time)
-    //{
-    //    yield return new WaitForSeconds(time);
-    //    animator.SetBool("IsHealing", false);
-    //    animator.SetTrigger("FinishHeal");
-
-    //    if (healingParticles != null)
-    //    {
-    //        healingParticles.Stop();
-    //    }
-
-    //    float missingHealth = 100f - playerHealth.currentHealth;
-    //    float healAmountToApply = Mathf.Min(healAmount, missingHealth);
-
-    //    //playerHealth.RestoreHealth(healAmount);
-    //}
 }

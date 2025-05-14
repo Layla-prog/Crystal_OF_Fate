@@ -16,9 +16,6 @@ public class EnemyAI : MonoBehaviour
     private Transform currentTarget;
     private List<Transform> detectedTargets = new List<Transform>();
 
-
-    //private bool playerDetected = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -46,23 +43,6 @@ public class EnemyAI : MonoBehaviour
             agent.isStopped = false;
             Patrol();
         }
-
-        /*if (currentTarget == null) return;
-
-        float distanceToPlayer = Vector3.Distance(transform.position, currentTarget.position);
-
-        if (distanceToPlayer <= detectionRadius)
-        {
-            playerDetected = true;
-            agent.isStopped = true; // Stop moving to patrol points
-            transform.LookAt(new Vector3(currentTarget.position.x, transform.position.y, currentTarget.position.z)); // Look at player
-        }
-        else
-        {
-            playerDetected = false;
-            agent.isStopped = false;
-            Patrol();
-        }*/
     }
 
     void DetectTargets()

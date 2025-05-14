@@ -8122,7 +8122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1684fc07881f5c940934c57950341662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCanvas: {fileID: 0}
+  mainCanvas: {fileID: 1018427134}
   PanelControls: {fileID: 1299954620}
   PanelVideo: {fileID: 1319462112}
   PanelGame: {fileID: 199198229}

@@ -163,7 +163,6 @@ public class GoblinAI : MonoBehaviour
         {
             Vector3 dropPosition = transform.position + Vector3.up * 1.0f; // 1 unit above ground
             Instantiate(staminaPotionPrefab, dropPosition, Quaternion.identity);
-            //Instantiate(staminaPotionPrefab, transform.position, Quaternion.identity);
         }
     }
 

@@ -22,14 +22,6 @@ public class PotionZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (!playerInRange)
-        {
-            if (choiceUI.activeSelf)
-            {
-                choiceUI.SetActive(false);  // Force close if out of range
-                return;
-            }
-        }*/
 
         if (playerInRange && Input.GetKeyDown(KeyCode.Q))
         {

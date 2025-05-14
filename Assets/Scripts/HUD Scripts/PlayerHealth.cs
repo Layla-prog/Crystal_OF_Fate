@@ -20,8 +20,6 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
 
-        //healthUI = GetComponent<PlayerHealthUI>();
-
         if (healthUI == null)
         {
             healthUI = GetComponentInChildren<PlayerHealthUI>();
@@ -49,18 +47,6 @@ public class PlayerHealth : MonoBehaviour
 
         OnDamaged?.Invoke(currentHealth);
 
-        /*currentHealth -= damage;
-        Debug.Log("Player took damage: " + damage + ". Current health: " + currentHealth);
-
-        currentHealth = Mathf.Max(0, currentHealth);
-
-        //TopHealthBarManager.Instance.ShowHealthBar(gameObject.name, currentHealth / maxHealth);
-
-        if (healthUI != null)
-        {
-            healthUI.ShowHealthBar(currentHealth / maxHealth);
-        }*/
-
         if (currentHealth <= 0f && !isDead)
         {
             Die();
@@ -78,15 +64,8 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log($"{gameObject.name} died.");
 
-        /*GameOverManager gameOver = FindObjectOfType<GameOverManager>();
-        if (gameOver != null)
-        {
-            gameOver.ShowGameOver();
-        }*/
-
         // Game over scene
         GameOverManager.Instance?.ShowGameOver();
-        //Invoke(nameof(TriggerGameOver), 1.5f);
 
         // Disable player components
         GetComponent<CharacterController>().enabled = false;
@@ -95,11 +74,6 @@ public class PlayerHealth : MonoBehaviour
 
         Destroy(gameObject, 2f);
     }
-
-    /*private void TriggerGameOver()
-    {
-        GameOverManager.Instance?.ShowGameOver();
-    }*/
 
     public void RestoreHealth(float amount)
     {

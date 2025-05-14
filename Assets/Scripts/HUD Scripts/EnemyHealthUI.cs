@@ -40,10 +40,4 @@ public class EnemyHealthUI : MonoBehaviour
             healthBarRoot.SetActive(false); // Start hidden
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -45,20 +45,6 @@ public class MirokuCraftPotion : MonoBehaviour
 
     void MoveToPlayerAtSafeDistance()
     {
-        /*float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-
-        if (distanceToPlayer > followDistance)
-        {
-            // Follow the player
-            agent.SetDestination(player.transform.position);
-        }
-        else
-        {
-            // Stop close to player, at safe distance
-            Vector3 directionToPlayer = (transform.position - player.transform.position).normalized;
-            Vector3 safeSpot = player.transform.position + directionToPlayer * followDistance;
-            agent.SetDestination(safeSpot);
-        }*/
 
         Vector3 playerPos = player.transform.position;
         Vector3 playerForward = player.transform.forward;
