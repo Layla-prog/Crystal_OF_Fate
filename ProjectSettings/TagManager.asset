@@ -8,6 +8,8 @@ TagManager:
   - Ally
   - StrengthPotion
   - StaminaPotion
+  - Entry
+  - Exit
   layers:
   - Default
   - TransparentFX
@@ -23,8 +25,8 @@ TagManager:
   - Miroku
   - Eedie
   - Kate
-  - 
-  - 
+  - Entry
+  - Exit
   - 
   - 
   - 
