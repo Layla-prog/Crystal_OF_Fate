@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2661957064778176743}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: toes.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1914579375814092276}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: handslot.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7498933561980124268}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: kneeIK.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8484067396323844981}
   - component: {fileID: 1986341769316213189}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mage_ArmRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1497512550717878646}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: hand.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2614882001592875118}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: heelIK.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2896348696590757323}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: control-foot-roll.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4988142759799201879}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: heelIK.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4946096469730804596}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: wrist.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 353591646223974570}
   - component: {fileID: 353591646223974563}
   - component: {fileID: 353591646223974573}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Eedie
   m_TagString: Ally
   m_Icon: {fileID: 0}
@@ -411,7 +411,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588102842040560337}
-  m_LocalRotation: {x: -0, y: -0.9961427, z: -0, w: 0.08774793}
+  m_LocalRotation: {x: 0, y: -0.99614286, z: 0, w: 0.08774691}
   m_LocalPosition: {x: 195.89, y: 144.42, z: -86.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -552,7 +552,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 588102842040560337}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -574,7 +574,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8266820460419633112}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3707912452315618107}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,7 +649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5606356677576331143}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: control-heel-roll.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8755792675484337656}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: upperleg.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -714,7 +714,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7644401909097289902}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: handslot.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -749,7 +749,7 @@ GameObject:
   - component: {fileID: 8009706858161926130}
   - component: {fileID: 5615005230965565501}
   - component: {fileID: 1213455934651381191}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 1H_Wand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 2936603569511831549}
   - component: {fileID: 9007350471436043367}
   - component: {fileID: 6998288275914786893}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spellbook_open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4391956507001536064}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,7 +945,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1236472457997280238}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: handIK.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -976,7 +976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8312144231291905812}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: IK-toe.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,7 +1008,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6126824253530667823}
   - component: {fileID: 756376288146224606}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mage_LegLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1135,7 +1135,7 @@ GameObject:
   - component: {fileID: 3957190794583709350}
   - component: {fileID: 6921941475132969603}
   - component: {fileID: 3939829161171836970}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mage_Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1218,7 +1218,7 @@ GameObject:
   - component: {fileID: 2691926979066248860}
   - component: {fileID: 7823231558246356707}
   - component: {fileID: 7424627574205109856}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: 2H_Staff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1299,7 +1299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3517944901236261923}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1331,7 +1331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3537524479471803601}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: handIK.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1364,7 +1364,7 @@ GameObject:
   - component: {fileID: 5280276564735481808}
   - component: {fileID: 7088716022228785369}
   - component: {fileID: 7367649993066278192}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spellbook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1446,7 +1446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7070172017874754892}
   - component: {fileID: 8882089871875174663}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mage_LegRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1571,7 +1571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5498190584058650922}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: control-toe-roll.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1603,7 +1603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8297877503653566275}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: foot.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1635,7 +1635,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7125028516676149114}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1670,7 +1670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4140078528500105128}
   - component: {fileID: 7196612937491671855}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mage_ArmLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1797,7 +1797,7 @@ GameObject:
   - component: {fileID: 5302855633228581064}
   - component: {fileID: 2420707860746839084}
   - component: {fileID: 50052489171427114}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mage_Cape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1878,7 +1878,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3612368270071695872}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: control-heel-roll.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1911,7 +1911,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 571874142611916584}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lowerarm.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1943,7 +1943,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5924561035519455435}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: kneeIK.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1974,7 +1974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 903107373477476725}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: control-foot-roll.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2007,7 +2007,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8489575205971649113}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: upperarm.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2039,7 +2039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8761137228151625961}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: elbowIK.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2070,7 +2070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 486820006308898811}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: wrist.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2103,7 +2103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3374884074869149014}
   - component: {fileID: 8523952512866502431}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mage_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2228,7 +2228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6037245142558090802}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lowerleg.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2260,7 +2260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 103400909985743439}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: control-toe-roll.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2292,7 +2292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7517682956767184497}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lowerarm.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2324,7 +2324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9070315594035079146}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: foot.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2356,7 +2356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7866713422050035708}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: IK-foot.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2387,7 +2387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9076038164406272877}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2420,7 +2420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009795981565726839}
   - component: {fileID: 2350239024572605115}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mage_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2545,7 +2545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3899559355150700420}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: hand.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2577,7 +2577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 172952691118295318}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: toes.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2608,7 +2608,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7231853357109694808}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: IK-foot.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2639,7 +2639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8409762483827139760}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: upperarm.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2671,7 +2671,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 177710106870490246}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: upperleg.l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2703,7 +2703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3938835702396050932}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: lowerleg.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2735,7 +2735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4192501003009824101}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: IK-toe.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2766,7 +2766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6640467730927394056}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: elbowIK.r
   m_TagString: Untagged
   m_Icon: {fileID: 0}

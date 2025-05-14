@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Healer : MonoBehaviour
 {
     public Animator animator;
-    public float healAmount = 25f;
+    public float healAmount = 20f;
     public float healThreshold = 70f;
     public float healingDistance = 2f;
     public float followDistance = 5f;
@@ -124,6 +124,12 @@ public class Healer : MonoBehaviour
             yield return null;
         }
 
+        if (playerHealth == null || playerHealth.isDead)
+        {
+            Debug.Log("Player is dead. Cancelling healing.");
+            yield break;
+        }
+
         isHealing = true;
 
         // Stop agent
@@ -149,7 +155,7 @@ public class Healer : MonoBehaviour
             playerHealth.RestoreHealth(healAmount);
             Debug.Log("Healer healed player by " + healAmount);
 
-            //yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(3f);
         //}
 
         isHealing = false;

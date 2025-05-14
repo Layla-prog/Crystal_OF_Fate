@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2128333210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2128333211}
+  m_Layer: 6
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2128333211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128333210}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8272943599223628453}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8272943599224061569
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8272943599223628453
 Transform:
   m_ObjectHideFlags: 0
@@ -230,7 +261,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8272943599224061573}
-  m_LocalRotation: {x: -0, y: 0.9991499, z: -0, w: 0.041224845}
+  m_LocalRotation: {x: 0, y: 0.99915004, z: 0, w: 0.041221913}
   m_LocalPosition: {x: 196.193, y: 144.39, z: -104.923}
   m_LocalScale: {x: 1.6964747, y: 1.5163335, z: 2.153374}
   m_ConstrainProportionsScale: 0
@@ -238,6 +269,7 @@ Transform:
   - {fileID: 8272943599223628535}
   - {fileID: 8272943599223628451}
   - {fileID: 8272943599223628449}
+  - {fileID: 2128333211}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 175.275, z: 0}
@@ -260,8 +292,8 @@ MonoBehaviour:
   attackCooldown: 1.5
   attackDamage: 10
   animator: {fileID: 5029183775007132260}
-  staminaPotionPrefab: {fileID: 0}
-  dropPoint: {fileID: 0}
+  staminaPotionPrefab: {fileID: 1698215624018638053, guid: 19ce2a79fae052345be17821b043844d, type: 3}
+  dropPoint: {fileID: 2128333211}
 --- !u!136 &5029183775007132264
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -328,8 +360,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 100
-  characterName: Default
+  currentHealth: 0
+  characterName: Goblin
   healthUI: {fileID: 0}
 --- !u!1 &8272943599224061575
 GameObject:

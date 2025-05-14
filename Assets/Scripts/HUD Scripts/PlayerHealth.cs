@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
 
     public PlayerHealthUI healthUI;
 
+    public bool isDead = false;
+
     // Event triggered when damage is taken
     public System.Action<float> OnDamaged;
 
@@ -35,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isDead) return;
+
         currentHealth -= damage;
 
         //clamp to 0
@@ -57,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
             healthUI.ShowHealthBar(currentHealth / maxHealth);
         }*/
 
-        if (currentHealth <= 0f)
+        if (currentHealth <= 0f && !isDead)
         {
             Die();
         }
@@ -65,15 +69,26 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        if (isDead)
+        {
+            return;
+        }
+
+        isDead = true;
+
         Debug.Log($"{gameObject.name} died.");
 
-        GameOverManager gameOver = FindObjectOfType<GameOverManager>();
+        /*GameOverManager gameOver = FindObjectOfType<GameOverManager>();
         if (gameOver != null)
         {
             gameOver.ShowGameOver();
-        }
+        }*/
 
-        // Optional: Disable movement or animations
+        // Game over scene
+        GameOverManager.Instance?.ShowGameOver();
+        //Invoke(nameof(TriggerGameOver), 1.5f);
+
+        // Disable player components
         GetComponent<CharacterController>().enabled = false;
         GetComponent<PlayerCombat>().enabled = false;
         this.enabled = false;
@@ -81,8 +96,15 @@ public class PlayerHealth : MonoBehaviour
         Destroy(gameObject, 2f);
     }
 
+    /*private void TriggerGameOver()
+    {
+        GameOverManager.Instance?.ShowGameOver();
+    }*/
+
     public void RestoreHealth(float amount)
     {
+        if (isDead) return;
+
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
         healthUI?.ShowHealthBar(currentHealth / maxHealth);
     }

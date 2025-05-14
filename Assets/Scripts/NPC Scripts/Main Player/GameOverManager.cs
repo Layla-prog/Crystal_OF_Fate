@@ -6,46 +6,53 @@ using UnityEngine.SceneManagement;
 public class GameOverManager : MonoBehaviour
 {
     public static GameOverManager Instance;
-    public GameObject gameOverCanvas;
+    public string gameOverSceneName = "GameOver";
+
+    //public GameObject gameOverCanvas;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            //DontDestroyOnLoad(gameObject);
         }
-        else
+        else if (Instance != this)
         {
-            Destroy(gameObject);
+            if (SceneManager.GetActiveScene().name != gameOverSceneName)
+            {
+                Destroy(gameObject);
+            }
         }
 
-        if (gameOverCanvas != null)
+        /*if (gameOverCanvas != null)
         { 
             gameOverCanvas.SetActive(false);
-        }
+        }*/
 
         //DontDestroyOnLoad(gameObject);
     }
 
     public void ShowGameOver()
     {
-        //Time.timeScale = 0f;
-
-        if (gameOverCanvas != null)
+        /*if (gameOverCanvas != null)
         {
             gameOverCanvas.SetActive(true);
-            //Time.timeScale = 0f;
-        }
+        }*/
+        SceneManager.LoadScene(gameOverSceneName);
     }
 
     public void RestartGame()
     {
+        Debug.Log("RestartGame button pressed.");
+        SceneManager.LoadScene("FunctionalitiesTesting");
         //Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()
     {
+        Debug.Log("QuitGame button pressed.");
         Application.Quit();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false; // stop play mode in editor
@@ -55,8 +62,8 @@ public class GameOverManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameOverCanvas != null)
-            gameOverCanvas.SetActive(false);
+        /*if (gameOverCanvas != null)
+            gameOverCanvas.SetActive(false);*/
     }
 
     // Update is called once per frame

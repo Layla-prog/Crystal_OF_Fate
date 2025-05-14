@@ -22,6 +22,9 @@ public class KateFollowAndCombat : MonoBehaviour
     public Transform firePoint;
     public LayerMask enemyLayer;
 
+    public Vector3 followOffset = new Vector3(1.5f, 0, -1.5f); // Slightly to the right and back
+
+
     private float lastAttackTime;
     private bool isActive = false;
     private float verticalVelocity = 0f;
@@ -115,13 +118,16 @@ public class KateFollowAndCombat : MonoBehaviour
     {
         if (player == null || animator == null || characterController == null) return;
 
-        Vector3 direction = player.position - transform.position;
-        direction.y = 0f;
+        /*Vector3 direction = player.position - transform.position;
+        direction.y = 0f;*/ //
+
+        Vector3 targetPos = player.position + player.TransformDirection(followOffset);
+        Vector3 direction = targetPos - transform.position;
 
 
         //if (distance > stopDistance)
         //{
-            Vector3 moveDir = direction.normalized;
+        Vector3 moveDir = direction.normalized;
             Vector3 movement = moveDir * followSpeed;
 
             if (characterController.isGrounded)
