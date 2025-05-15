@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniMapAllyManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class MiniMapAllyManager : MonoBehaviour
 
     private GameObject playerMarker;
 
+    public GameObject exitMarkerPrefab;
+    public Transform exitPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,19 +33,76 @@ public class MiniMapAllyManager : MonoBehaviour
             GameObject markerPrefab = GetMarkerPrefabByType(npcComponent.npcType);
             if (markerPrefab != null)
             {
-                // Instantiate marker for small minimap
+                // small minimap marker
                 GameObject markerSmall = Instantiate(markerPrefab, markerParentSmall);
                 AllyMiniMapMarker trackerSmall = markerSmall.AddComponent<AllyMiniMapMarker>();
                 trackerSmall.target = ally.transform;
                 trackerSmall.markerUI = markerSmall.GetComponent<RectTransform>();
                 trackerSmall.miniMapCamera = miniMapCamera;
 
-                // Instantiate marker for full minimap
+                // marker colors for small minimap
+                Image imageSmall = markerSmall.GetComponent<Image>();
+                if (imageSmall != null)
+                {
+                    switch (npcComponent.npcType)
+                    {
+                        case NPCType.Healer:
+                            imageSmall.color = Color.red;
+                            break;
+                        case NPCType.Archer:
+                            imageSmall.color = Color.green;
+                            break;
+                        case NPCType.PotionCrafter:
+                            imageSmall.color = Color.blue;
+                            break;
+                        case NPCType.Craftsman:
+                            imageSmall.color = Color.gray;
+                            break;
+                    }
+                }
+
+                // full minimap marker
                 GameObject markerFull = Instantiate(markerPrefab, markerParentFull);
                 AllyMiniMapMarker trackerFull = markerFull.AddComponent<AllyMiniMapMarker>();
                 trackerFull.target = ally.transform;
                 trackerFull.markerUI = markerFull.GetComponent<RectTransform>();
                 trackerFull.miniMapCamera = miniMapCamera;
+
+                // marker colors for small minimap
+                Image imageFull = markerSmall.GetComponent<Image>();
+                if (imageFull != null)
+                {
+                    switch (npcComponent.npcType)
+                    {
+                        case NPCType.Healer:
+                            imageSmall.color = Color.red;
+                            break;
+                        case NPCType.Archer:
+                            imageSmall.color = Color.green;
+                            break;
+                        case NPCType.PotionCrafter:
+                            imageSmall.color = Color.blue;
+                            break;
+                        case NPCType.Craftsman:
+                            imageSmall.color = Color.gray;
+                            break;
+                    }
+                }
+
+                // Small minimap exit marker
+                GameObject exitMarkerSmall = Instantiate(exitMarkerPrefab, markerParentSmall);
+                AllyMiniMapMarker exitTrackerSmall = exitMarkerSmall.AddComponent<AllyMiniMapMarker>();
+                exitTrackerSmall.target = exitPoint;
+                exitTrackerSmall.markerUI = exitMarkerSmall.GetComponent<RectTransform>();
+                exitTrackerSmall.miniMapCamera = miniMapCamera;
+
+                // Full minimap exit marker
+                GameObject exitMarkerFull = Instantiate(exitMarkerPrefab, markerParentFull);
+                AllyMiniMapMarker exitTrackerFull = exitMarkerFull.AddComponent<AllyMiniMapMarker>();
+                exitTrackerFull.target = exitPoint;
+                exitTrackerFull.markerUI = exitMarkerFull.GetComponent<RectTransform>();
+                exitTrackerFull.miniMapCamera = miniMapCamera;
+
             }
         }
         CreatePlayerMarker();
