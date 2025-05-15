@@ -32,6 +32,7 @@ public class PotionZone : MonoBehaviour
 
     public void ChooseStrength()
     {
+        Debug.Log("Strength button");
         choiceUI.SetActive(false);
         craftPotion.TryCraftPotion("Strength");
     }

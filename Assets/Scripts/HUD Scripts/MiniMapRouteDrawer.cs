@@ -31,6 +31,57 @@ public class MiniMapRouteDrawer : MonoBehaviour
 
     private List<Transform> allies = new List<Transform>();
     private float timer;
+
+    [Header("Smoothing")]
+    public float smoothingSpeed = 5f;
+
+    private float targetAngleSmall, targetAngleFull;
+    private Vector2 targetPosSmall, targetPosFull;
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer >= updateRate)
+        {
+            ComputeArrowTarget(exitArrowSmall, minimapSmallRect, out targetAngleSmall, out targetPosSmall);
+            ComputeArrowTarget(exitArrowFull, minimapFullRect, out targetAngleFull, out targetPosFull);
+            UpdateAllyRoutes();
+            timer = 0f;
+        }
+
+        // move each arrow smoothly every frame
+        SmoothMoveArrow(exitArrowSmall, targetAngleSmall, targetPosSmall);
+        SmoothMoveArrow(exitArrowFull, targetAngleFull, targetPosFull);
+    }
+
+    void ComputeArrowTarget(RectTransform arrow, RectTransform minimapRect, out float angleDeg, out Vector2 localPos)
+    {
+        // same code until angle and localPos
+        Vector3 dirToExit = exitPoint.position - player.position;
+        dirToExit.y = 0;
+        float rawAngle = Mathf.Atan2(dirToExit.x, dirToExit.z) * Mathf.Rad2Deg;
+        angleDeg = -rawAngle;
+
+        Vector3 projected = player.position + dirToExit.normalized * 5f;
+        Vector3 screenPt = minimapCamera.WorldToScreenPoint(projected);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            minimapRect, screenPt, minimapCamera, out localPos
+        );
+        float maxR = Mathf.Min(minimapRect.rect.width, minimapRect.rect.height) / 2 - edgeBuffer;
+        localPos = Vector2.ClampMagnitude(localPos, maxR);
+    }
+
+    void SmoothMoveArrow(RectTransform arrow, float targetAngle, Vector2 targetPos)
+    {
+        // lerp rotation
+        float currentZ = arrow.localEulerAngles.z;
+        float smoothedZ = Mathf.LerpAngle(currentZ, targetAngle, Time.deltaTime * smoothingSpeed);
+        arrow.localEulerAngles = new Vector3(0, 0, smoothedZ);
+
+        // lerp position
+        arrow.localPosition = Vector2.Lerp(arrow.localPosition, targetPos, Time.deltaTime * smoothingSpeed);
+    }
+
     void Start()
     {
         // Find all allies in scene
@@ -39,17 +90,17 @@ public class MiniMapRouteDrawer : MonoBehaviour
             allies.Add(obj.transform);
     }
 
-    void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer >= updateRate)
-        {
-            UpdateExitArrow(exitArrowSmall, minimapSmallRect);
-            UpdateExitArrow(exitArrowFull, minimapFullRect);
-            UpdateAllyRoutes(); // Optional
-            timer = 0f;
-        }
-    }
+    //void Update()
+    //{
+    //    timer += Time.deltaTime;
+    //    if (timer >= updateRate)
+    //    {
+    //        UpdateExitArrow(exitArrowSmall, minimapSmallRect);
+    //        UpdateExitArrow(exitArrowFull, minimapFullRect);
+    //        UpdateAllyRoutes(); // Optional
+    //        timer = 0f;
+    //    }
+    //}
 
     void UpdateExitArrow(RectTransform arrow, RectTransform minimapRect)
     {

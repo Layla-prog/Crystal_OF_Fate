@@ -133,6 +133,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wizard
       objectReference: {fileID: 0}
+    - target: {fileID: 5200928185489330880, guid: 6f1dc0f14d4c591489c6565c0cbbaeae, type: 3}
+      propertyPath: attackCooldown
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5200928185489330881, guid: 6f1dc0f14d4c591489c6565c0cbbaeae, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 4
@@ -471,8 +475,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 353353896}
   exitPoint: {fileID: 0}
-  miniMapCamera: {fileID: 0}
-  lineRectTransform: {fileID: 0}
+  minimapCamera: {fileID: 0}
+  minimapSmallRect: {fileID: 0}
+  minimapFullRect: {fileID: 0}
+  exitArrowSmall: {fileID: 0}
+  exitArrowFull: {fileID: 0}
+  edgeBuffer: 10
+  allyLinesSmall: []
+  allyLinesFull: []
+  updateRate: 0.5
+  smoothingSpeed: 5
 --- !u!1001 &353353895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6330,6 +6342,10 @@ PrefabInstance:
     - target: {fileID: 243912118935089259, guid: 4e80230700b0ee54b834b43430d6b2c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 353591646223974563, guid: 4e80230700b0ee54b834b43430d6b2c0, type: 3}
+      propertyPath: followDistance
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 353591646223974563, guid: 4e80230700b0ee54b834b43430d6b2c0, type: 3}
       propertyPath: healingParticles

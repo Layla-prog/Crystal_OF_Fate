@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Healer : MonoBehaviour
 {
     public Animator animator;
-    public float healAmount = 20f;
+    public float healAmount = 25f;
     public float healThreshold = 70f;
     public float healingDistance = 2f;
     public float followDistance = 5f;
@@ -142,20 +142,20 @@ public class Healer : MonoBehaviour
             animator.SetBool("IsHealing", true);
             if (healingParticles != null) healingParticles.Play();
 
-            yield return new WaitForSeconds(3f); // time to "cast" healing
+            yield return new WaitForSeconds(2f); // time to "cast" healing
 
             // Apply healing, making sure not to exceed the max health (100)
             float missingHealth = 100f - playerHealth.currentHealth;
             float healAmountToApply = Mathf.Min(healAmount, missingHealth);
 
-            // Stop healing
-            animator.SetBool("IsHealing", false);
-            if (healingParticles != null) healingParticles.Stop();
-
-            playerHealth.RestoreHealth(healAmount);
+            playerHealth.RestoreHealth(healAmountToApply);
             Debug.Log("Healer healed player by " + healAmount);
 
-            yield return new WaitForSeconds(3f);
+        // Stop healing
+            animator.SetBool("IsHealing", false);
+            if (healingParticles != null) healingParticles.Stop();   
+
+            //yield return new WaitForSeconds(3f);
         //}
 
         isHealing = false;
