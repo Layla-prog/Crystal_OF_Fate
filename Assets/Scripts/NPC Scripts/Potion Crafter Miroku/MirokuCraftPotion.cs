@@ -76,6 +76,7 @@ public class MirokuCraftPotion : MonoBehaviour
     IEnumerator CraftAndGivePotion()
     {
         isCrafting = true;
+        Debug.Log("start crafting");
 
         animator.SetTrigger("Craft");
 
@@ -101,6 +102,7 @@ public class MirokuCraftPotion : MonoBehaviour
 
         // Play give animation
         animator.SetTrigger("GivePotion");
+        Debug.Log("give potion animation");
 
         // Detach potion and move it to the player's potion anchor
         potion.transform.SetParent(null);
@@ -118,6 +120,8 @@ public class MirokuCraftPotion : MonoBehaviour
         potion.transform.SetParent(giveTarget, false);
         potion.transform.localPosition = Vector3.zero;
         potion.transform.localRotation = Quaternion.identity;
+
+        Debug.Log("potion moved to player");
 
         // Notify player
         player.SendMessage("SetCurrentPotionType", currentPotionType, SendMessageOptions.DontRequireReceiver);
