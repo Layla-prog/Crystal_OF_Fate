@@ -17,11 +17,13 @@ public class MiniMapRouteDrawer : MonoBehaviour
     public RectTransform minimapSmallRect;
     public RectTransform minimapFullRect;
 
-    [Header("Line Renderers")]
-    public UILineRenderer routeToExitSmall;
-    public UILineRenderer routeToExitFull;
+    [Header("Exit Arrow")]
+    public RectTransform exitArrowSmall; // Arrow for small minimap
+    public RectTransform exitArrowFull;  // Arrow for fullscreen minimap
+    public float edgeBuffer = 10f;
 
-    public UILineRenderer[] allyLinesSmall; // Assign one per ally
+    [Header("Ally Route Lines (Optional)")]
+    public UILineRenderer[] allyLinesSmall;
     public UILineRenderer[] allyLinesFull;
 
     [Header("Update Settings")]
@@ -29,7 +31,6 @@ public class MiniMapRouteDrawer : MonoBehaviour
 
     private List<Transform> allies = new List<Transform>();
     private float timer;
-
     void Start()
     {
         // Find all allies in scene
@@ -43,13 +44,79 @@ public class MiniMapRouteDrawer : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= updateRate)
         {
-            UpdateExitRoutes();
-            UpdateAllyRoutes();
+            UpdateExitArrow(exitArrowSmall, minimapSmallRect);
+            UpdateExitArrow(exitArrowFull, minimapFullRect);
+            UpdateAllyRoutes(); // Optional
             timer = 0f;
         }
     }
 
-    void UpdateExitRoutes()
+    void UpdateExitArrow(RectTransform arrow, RectTransform minimapRect)
+    {
+        if (player == null || exitPoint == null || arrow == null || minimapCamera == null) return;
+
+        Vector3 dirToExit = exitPoint.position - player.position;
+        dirToExit.y = 0f;
+        Vector3 forwardDir = player.forward;
+        forwardDir.y = 0f;
+
+        // Rotate arrow to point toward exit
+        float angle = Mathf.Atan2(dirToExit.x, dirToExit.z) * Mathf.Rad2Deg;
+        arrow.localEulerAngles = new Vector3(0, 0, -angle);
+
+        // Offset from player to arrow direction (in front)
+        Vector3 projectedPoint = player.position + dirToExit.normalized * 5f;
+        Vector3 screenPos = minimapCamera.WorldToScreenPoint(projectedPoint);
+
+        Vector2 localPos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            minimapRect, screenPos, minimapCamera, out localPos
+        );
+
+        // Clamp position within minimap bounds
+        float maxRadius = Mathf.Min(minimapRect.rect.width, minimapRect.rect.height) / 2f - edgeBuffer;
+        localPos = Vector2.ClampMagnitude(localPos, maxRadius);
+
+        arrow.localPosition = localPos;
+    }
+
+    void UpdateAllyRoutes()
+    {
+        for (int i = 0; i < allies.Count; i++)
+        {
+            NavMeshPath path = new NavMeshPath();
+            if (NavMesh.CalculatePath(player.position, allies[i].position, NavMesh.AllAreas, path))
+            {
+                if (i < allyLinesSmall.Length)
+                    DrawRoute(path, allyLinesSmall[i], minimapSmallRect);
+                if (i < allyLinesFull.Length)
+                    DrawRoute(path, allyLinesFull[i], minimapFullRect);
+            }
+        }
+    }
+
+    void DrawRoute(NavMeshPath path, UILineRenderer lineRenderer, RectTransform minimapRect)
+    {
+        if (path == null || path.corners.Length < 2 || lineRenderer == null) return;
+
+        List<Vector2> points = new List<Vector2>();
+
+        for (int i = 0; i < path.corners.Length; i++)
+        {
+            Vector3 screenPos = minimapCamera.WorldToScreenPoint(path.corners[i]);
+
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                minimapRect, screenPos, minimapCamera, out Vector2 localPoint))
+            {
+                points.Add(localPoint);
+            }
+        }
+
+        lineRenderer.Points = points.ToArray();
+        lineRenderer.SetAllDirty();
+    }
+
+   /* void UpdateExitRoutes()
     {
         NavMeshPath pathToExit = new NavMeshPath();
         if (NavMesh.CalculatePath(player.position, exitPoint.position, NavMesh.AllAreas, pathToExit))
@@ -73,7 +140,7 @@ public class MiniMapRouteDrawer : MonoBehaviour
             }
         }
     }
-
+   */
 
 
     /*void UpdateExitRoutes()
@@ -118,7 +185,7 @@ public class MiniMapRouteDrawer : MonoBehaviour
         lineRenderer.SetAllDirty(); // Force refresh
     }*/
 
-    void DrawRoute(NavMeshPath path, UILineRenderer lineRenderer, RectTransform minimapRect)
+    /*void DrawRoute(NavMeshPath path, UILineRenderer lineRenderer, RectTransform minimapRect)
     {
         if (path == null || path.corners.Length < 2) return;
 
@@ -142,7 +209,7 @@ public class MiniMapRouteDrawer : MonoBehaviour
 
         lineRenderer.Points = points.ToArray();
         lineRenderer.SetAllDirty(); // Refresh the line
-    }
+    }*/
 
 
 }
