@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41de4f9d551f2064196e21818adc3946, type: 3}
+  m_Name: potion_small_orange
+  m_EditorClassIdentifier: 
+  id: 7
+  ItemName: potion_small_orange
+  Value: 10
+  Image: {fileID: 21300000, guid: 74040d0e0819060478e6fb4b62cdfdcb, type: 3}
