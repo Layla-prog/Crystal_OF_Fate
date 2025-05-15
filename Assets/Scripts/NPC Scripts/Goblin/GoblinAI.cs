@@ -16,6 +16,8 @@ public class GoblinAI : MonoBehaviour
 
 
     public GameObject staminaPotionPrefab; 
+    public GameObject shield;
+     public GameObject sword_1handed;
     public Transform dropPoint;
 
 
@@ -164,6 +166,19 @@ public class GoblinAI : MonoBehaviour
             Vector3 dropPosition = transform.position + Vector3.up * 1.0f; // 1 unit above ground
             Instantiate(staminaPotionPrefab, dropPosition, Quaternion.identity);
         }
+
+        if (sword_1handed != null)
+        {
+            Vector3 dropPosition = transform.position + Vector3.up * 1.0f; // 1 unit above ground
+            Instantiate(sword_1handed, dropPosition, Quaternion.identity);
+        }
+
+        if (shield != null)
+        {
+            Vector3 dropPosition = transform.position + Vector3.up * 1.0f; // 1 unit above ground
+            Instantiate(shield, dropPosition, Quaternion.identity);
+        }
+        
     }
 
     public void DealDamage()

@@ -242,6 +242,10 @@ PrefabInstance:
       value: MainMenuManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1120576110, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
+      propertyPath: onPressAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120576110, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
       propertyPath: onPressAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -1555,6 +1559,38 @@ PrefabInstance:
       propertyPath: m_Text
       value: Q U I T
       objectReference: {fileID: 0}
+    - target: {fileID: 715450882012552304, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
+      propertyPath: m_Text
+      value: N E W A D V E N T U R E
+      objectReference: {fileID: 0}
+    - target: {fileID: 5122569024545104592, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1235
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 385
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1120576110, guid: 479b481c096e3fd49b7cbc46f202a9f9, type: 3}
       propertyPath: thisIndex
       value: 3
@@ -1710,38 +1746,6 @@ PrefabInstance:
     - target: {fileID: 8157862164507402858, guid: 479b481c096e3fd49b7cbc46f202a9f9, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 955.2109
-      objectReference: {fileID: 0}
-    - target: {fileID: 715450882012552304, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
-      propertyPath: m_Text
-      value: N E W A D V E N T U R E
-      objectReference: {fileID: 0}
-    - target: {fileID: 5122569024545104592, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1235
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 385
-      objectReference: {fileID: 0}
-    - target: {fileID: 8132323862891624162, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 479b481c096e3fd49b7cbc46f202a9f9, type: 3}
@@ -1924,7 +1928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1120576110, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
       propertyPath: onPressAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1120576110, guid: b884947660cdaf349b8e78751eccbdf1, type: 3}
       propertyPath: onPressAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

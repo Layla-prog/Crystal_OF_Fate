@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: -6835956461088291320}
   - component: {fileID: 6431438890588821767}
   - component: {fileID: 8820278173815041116}
+  - component: {fileID: 6358767587903705466}
+  - component: {fileID: 7902725366233728605}
   m_Layer: 0
   m_Name: staminaPotion
   m_TagString: StaminaPotion
@@ -28,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698215624018638053}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -129,3 +131,29 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.23200653
   m_Center: {x: 0.00000063329935, y: -0.080606505, z: 0.000000346452}
+--- !u!114 &6358767587903705466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698215624018638053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb75a63cc04a49842a362c6347a0f3da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: {fileID: 11400000, guid: b837f46687f992f48a0b6287cc65d593, type: 2}
+--- !u!114 &7902725366233728605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698215624018638053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54671a4bae2f1ff48befff7dbb0f97e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: {fileID: 11400000, guid: b837f46687f992f48a0b6287cc65d593, type: 2}
