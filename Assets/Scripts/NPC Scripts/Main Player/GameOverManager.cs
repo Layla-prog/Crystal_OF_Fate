@@ -7,6 +7,7 @@ public class GameOverManager : MonoBehaviour
 {
     public static GameOverManager Instance;
     public string gameOverSceneName = "GameOver";
+    public string restartSceneName = "Level1";
 
     //public GameObject gameOverCanvas;
 
@@ -24,30 +25,18 @@ public class GameOverManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-
-        /*if (gameOverCanvas != null)
-        { 
-            gameOverCanvas.SetActive(false);
-        }*/
-
-        //DontDestroyOnLoad(gameObject);
     }
 
     public void ShowGameOver()
     {
-        /*if (gameOverCanvas != null)
-        {
-            gameOverCanvas.SetActive(true);
-        }*/
         SceneManager.LoadScene(gameOverSceneName);
     }
 
     public void RestartGame()
     {
         Debug.Log("RestartGame button pressed.");
-        SceneManager.LoadScene("FunctionalitiesTesting");
-        //Time.timeScale = 1f;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(restartSceneName);
+    
     }
 
     public void QuitGame()
@@ -57,18 +46,5 @@ public class GameOverManager : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false; // stop play mode in editor
 #endif
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        /*if (gameOverCanvas != null)
-            gameOverCanvas.SetActive(false);*/
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
