@@ -328,6 +328,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8857973208619993636, guid: 039fb36837f735b49b210f53c4a07457, type: 3}
+      propertyPath: restartSceneName
+      value: Level3
+      objectReference: {fileID: 0}
     - target: {fileID: 8857973208619993637, guid: 039fb36837f735b49b210f53c4a07457, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -475,9 +479,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 353353896}
   exitPoint: {fileID: 0}
-  minimapCamera: {fileID: 0}
-  minimapSmallRect: {fileID: 0}
-  minimapFullRect: {fileID: 0}
+  minimapCamera: {fileID: 1944822786}
+  minimapSmallRect: {fileID: 620263369}
+  minimapFullRect: {fileID: 1766514469}
   exitArrowSmall: {fileID: 0}
   exitArrowFull: {fileID: 0}
   edgeBuffer: 10
@@ -7332,6 +7336,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 809eaeba8f75c4d48be9cfc89c93ba9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &1944822786 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4579874222694338127, guid: 0a8df3f184d7e144fba4a602cdd1b73b, type: 3}
+  m_PrefabInstance: {fileID: 2104223489}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1958536420
 GameObject:
   m_ObjectHideFlags: 0
@@ -7534,10 +7543,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 668244596144128221, guid: 0a8df3f184d7e144fba4a602cdd1b73b, type: 3}
+      propertyPath: InventoryItems.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4579874222694338125, guid: 0a8df3f184d7e144fba4a602cdd1b73b, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 353353896}
+    - target: {fileID: 4579874222694338127, guid: 0a8df3f184d7e144fba4a602cdd1b73b, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 63
+      objectReference: {fileID: 0}
     - target: {fileID: 4579874222790690201, guid: 0a8df3f184d7e144fba4a602cdd1b73b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
