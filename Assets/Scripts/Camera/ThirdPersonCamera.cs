@@ -13,26 +13,46 @@ public class ThirdPersonCamera : MonoBehaviour
     private float currentX = 0f;
     private float currentY = 20f;
 
+    public float sensitivityX = 1f;
+    public float sensitivityY = 1f;
+    public float smoothing = 1f;
+
+    private Vector2 smoothedInput;
+    private Vector2 mouseInput;
+
+
     void LateUpdate()
-    {
-        if (target == null) return;
+{
+    if (target == null) return;
 
-        currentX += Input.GetAxis("Mouse X") * rotationSpeed;
-        currentY -= Input.GetAxis("Mouse Y") * rotationSpeed;
-        currentY = Mathf.Clamp(currentY, minY, maxY);
+    // Raw input
+    float rawMouseX = Input.GetAxis("Mouse X");
+    float rawMouseY = Input.GetAxis("Mouse Y");
 
-        Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
-        Vector3 desiredPosition = target.position + rotation * offset;
+    // Apply smoothing
+    mouseInput.x = Mathf.Lerp(mouseInput.x, rawMouseX * sensitivityX, 1f / smoothing);
+    mouseInput.y = Mathf.Lerp(mouseInput.y, rawMouseY * sensitivityY, 1f / smoothing);
 
-        transform.position = desiredPosition;
-        transform.LookAt(target.position + Vector3.up * 1.5f); // adjust height of look-at point
-    }
+    currentX += mouseInput.x;
+    currentY -= mouseInput.y;
+    currentY = Mathf.Clamp(currentY, minY, maxY);
+
+    Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
+    Vector3 desiredPosition = target.position + rotation * offset;
+
+    transform.position = desiredPosition;
+    transform.LookAt(target.position + Vector3.up * 1.5f);
+}
+
 
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
+{
+    sensitivityX = PlayerPrefs.GetFloat("XSensitivity", 1f);
+    sensitivityY = PlayerPrefs.GetFloat("YSensitivity", 1f);
+    smoothing = PlayerPrefs.GetFloat("MouseSmoothing", 1f);
+}
+
 
     // Update is called once per frame
     void Update()

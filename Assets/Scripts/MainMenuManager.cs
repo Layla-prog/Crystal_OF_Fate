@@ -16,7 +16,7 @@ public int mainMenuSceneIndex = 1;
             string currentScene = SceneManager.GetActiveScene().name;
 
             // Check if current scene is OptionsScene or SaveListScene
-            if ((currentScene == "OptionsScene" || currentScene == "SaveListScene" || currentScene == "credits" || currentScene == "Instructions") &&
+            if ((currentScene == "OptionsScene" || currentScene == "SaveListScene" || currentScene == "credits" || currentScene == "Instructions" || currentScene == "Level1" || currentScene == "Level2") &&
                 SceneManager.GetActiveScene().buildIndex != mainMenuSceneIndex)
             {
                 SceneManager.LoadScene(mainMenuSceneIndex);

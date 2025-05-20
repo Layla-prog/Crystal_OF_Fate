@@ -7,17 +7,19 @@ public class GoblinAI : MonoBehaviour
 {
     public string characterName = "Goblin";
 
-    public float detectRange = 10f;
-    public float attackRange = 2f;
-    public float moveSpeed = 2f;
-    public float attackCooldown = 1.5f;
-    public int attackDamage = 10;
+        [HideInInspector] public float detectRange = 10f;
+    [HideInInspector] public float attackRange = 2f;    
+    [HideInInspector] public float moveSpeed ;
+    [HideInInspector] public float attackCooldown;
+    [HideInInspector] public int attackDamage;
     public Animator animator;
 
 
-    public GameObject staminaPotionPrefab; 
+
+
+    public GameObject staminaPotionPrefab;
     public GameObject shield;
-     public GameObject sword_1handed;
+    public GameObject sword_1handed;
     public Transform dropPoint;
 
 
@@ -178,7 +180,7 @@ public class GoblinAI : MonoBehaviour
             Vector3 dropPosition = transform.position + Vector3.up * 1.0f; // 1 unit above ground
             Instantiate(shield, dropPosition, Quaternion.identity);
         }
-        
+
     }
 
     public void DealDamage()
@@ -213,4 +215,25 @@ public class GoblinAI : MonoBehaviour
     {
         hasDealtDamage = false;
     }
+
+
+
+    public void SetEasyMode()
+    {
+        attackDamage = 3;
+        moveSpeed = 1.5f;
+        attackCooldown = 2.5f;
+        Debug.Log("Goblin set to Easy mode.");
+        Debug.Log("Easy mode."  + attackDamage  +  moveSpeed + attackCooldown );
+}
+
+    public void SetHardMode()
+    {
+        attackDamage = 20;
+        moveSpeed = 3.5f;
+        attackCooldown = 0.8f;
+        Debug.Log("Goblin set to Hard mode.");
+        Debug.Log("Hard mode."  + attackDamage  +  moveSpeed + attackCooldown );
+}
+
 }

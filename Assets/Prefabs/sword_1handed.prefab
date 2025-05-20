@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4268107106588175929}
   - component: {fileID: 906498243637879196}
+  - component: {fileID: -7314218497612755845}
   - component: {fileID: 3130124956715570518}
   - component: {fileID: 4373529264499149264}
   - component: {fileID: 4373529264499149265}
-  - component: {fileID: -7314218497612755845}
   m_Layer: 0
   m_Name: sword_1handed
   m_TagString: Untagged
@@ -43,6 +43,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3490444056586253443}
+  m_Mesh: {fileID: -6855750626627074973, guid: 5ecc8cc26bf61f74991fa05dd2b8f5a5, type: 3}
+--- !u!64 &-7314218497612755845
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3490444056586253443}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -6855750626627074973, guid: 5ecc8cc26bf61f74991fa05dd2b8f5a5, type: 3}
 --- !u!23 &3130124956715570518
 MeshRenderer:
@@ -112,17 +126,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: 7d1e4c829508a08499a277409e0e0fd3, type: 2}
---- !u!64 &-7314218497612755845
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3490444056586253443}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6855750626627074973, guid: 5ecc8cc26bf61f74991fa05dd2b8f5a5, type: 3}

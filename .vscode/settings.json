@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Crystal_OF_Fate.sln"
+    "dotnet.defaultSolution": "Crystal_OF_Fate1.sln"
 }

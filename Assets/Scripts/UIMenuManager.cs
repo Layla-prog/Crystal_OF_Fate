@@ -141,9 +141,7 @@ public class UIMenuManager : MonoBehaviour {
 			lineGeneral.SetActive(true);
 		}
 
-		public void PlayHover(){
-			hoverSound.Play();
-		}
+		
 
 		public void PlaySFXHover(){
 			sliderSound.Play();
